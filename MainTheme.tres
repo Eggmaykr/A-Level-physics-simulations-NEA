@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.501961, 0.756863, 0.843137, 1 )
+border_width_bottom = 11
+border_color = Color( 0.337255, 0.568627, 0.607843, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[resource]
+Panel/styles/panel = SubResource( 1 )
