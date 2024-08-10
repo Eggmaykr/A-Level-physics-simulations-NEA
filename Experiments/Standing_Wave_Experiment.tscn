@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://list.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/SWExperimentScript.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.501961, 0.756863, 0.843137, 1 )
+border_width_bottom = 5
+border_color = Color( 0.337255, 0.568627, 0.607843, 1 )
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFontData" id=1]
+override_oversampling = 20.0
+font_path = "res://Fonts/Lora-VariableFont_wght.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+outline_color = Color( 0.235294, 0.388235, 0.501961, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 244.86
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.501961, 0.756863, 0.843137, 1 )
+border_width_bottom = 5
+border_color = Color( 0.337255, 0.568627, 0.607843, 1 )
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Standing_Wave" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -4382, -255 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.858824, 0.858824, 0.858824, 1 )
+
+[node name="Title" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.062
+margin_bottom = 5.28
+custom_styles/panel = SubResource( 2 )
+
+[node name="Label" type="Label" parent="Title"]
+anchor_top = 0.091
+anchor_right = 1.0
+anchor_bottom = 0.091
+margin_left = 138.0
+margin_top = 0.0759993
+margin_right = -135.0
+margin_bottom = 128.076
+custom_colors/font_color = Color( 0, 0.145098, 0.376471, 1 )
+custom_constants/shadow_offset_x = 310
+custom_fonts/font = SubResource( 3 )
+text = "Standing Waves"
+align = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Title"]
+position = Vector2( 22, 6 )
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 1 )
+shape = SubResource( 4 )
+
+[node name="Tools" type="Panel" parent="."]
+anchor_top = 0.762
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.27991
+margin_bottom = 15.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Experiment" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="StandingWave" type="Line2D" parent="Experiment"]
+position = Vector2( 82, 776 )
+width = 5.0
+joint_mode = 2
+sharp_limit = 1.0
+round_precision = 15
