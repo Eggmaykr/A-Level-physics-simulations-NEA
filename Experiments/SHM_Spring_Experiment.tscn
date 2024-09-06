@@ -219,10 +219,10 @@ margin_bottom = 1476.0
 scroll_offset = Vector2( -40, -40 )
 
 [node name="GraphNode" type="GraphNode" parent="GraphEdit"]
-margin_left = 38.0
-margin_top = 36.0
-margin_right = 239.0
-margin_bottom = 236.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 241.0
+margin_bottom = 240.0
 mouse_filter = 1
 
 [connection signal="value_changed" from="EditableValues/MassSlider" to="Experiment" method="_on_MassSlider_value_changed"]

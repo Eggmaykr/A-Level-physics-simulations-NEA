@@ -84,6 +84,20 @@ margin_bottom = 40.0
 script = ExtResource( 2 )
 
 [node name="Light" parent="Experiment" instance=ExtResource( 3 )]
+margin_left = 213.0
+margin_right = 223.0
+
+[node name="Light2" parent="Experiment" instance=ExtResource( 3 )]
+margin_left = 159.0
+margin_right = 169.0
+
+[node name="Light3" parent="Experiment" instance=ExtResource( 3 )]
+margin_left = 106.0
+margin_right = 116.0
+
+[node name="Light4" parent="Experiment" instance=ExtResource( 3 )]
+margin_left = 57.0
+margin_right = 67.0
 
 [node name="Panel" type="Panel" parent="Experiment"]
 anchor_top = 4.1
