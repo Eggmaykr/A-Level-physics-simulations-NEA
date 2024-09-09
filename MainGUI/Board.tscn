@@ -1,0 +1,423 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://polka-dots-7876537_1920.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/BoardMovementScript.gd" type="Script" id=2]
+[ext_resource path="res://MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://list.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 244.86
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Board" type="Node2D" parent="."]
+
+[node name="Polka-dots-78765371920" type="Sprite" parent="Board"]
+position = Vector2( -864, 280 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371922" type="Sprite" parent="Board"]
+position = Vector2( -288, 280 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371921" type="Sprite" parent="Board"]
+position = Vector2( -1440, 280 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371923" type="Sprite" parent="Board"]
+position = Vector2( -864, 856 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371924" type="Sprite" parent="Board"]
+position = Vector2( -288, 856 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371925" type="Sprite" parent="Board"]
+position = Vector2( -1440, 856 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371926" type="Sprite" parent="Board"]
+position = Vector2( -864, -872 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371927" type="Sprite" parent="Board"]
+position = Vector2( -288, -872 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371928" type="Sprite" parent="Board"]
+position = Vector2( -1440, -872 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371929" type="Sprite" parent="Board"]
+position = Vector2( -864, -296 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371930" type="Sprite" parent="Board"]
+position = Vector2( -288, -296 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371931" type="Sprite" parent="Board"]
+position = Vector2( -1440, -296 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371932" type="Sprite" parent="Board"]
+position = Vector2( 864, 280 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371933" type="Sprite" parent="Board"]
+position = Vector2( 1440, 280 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371934" type="Sprite" parent="Board"]
+position = Vector2( 288, 280 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371935" type="Sprite" parent="Board"]
+position = Vector2( 864, 856 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371936" type="Sprite" parent="Board"]
+position = Vector2( 1440, 856 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371937" type="Sprite" parent="Board"]
+position = Vector2( 288, 856 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371944" type="Sprite" parent="Board"]
+position = Vector2( -864, 1432 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371945" type="Sprite" parent="Board"]
+position = Vector2( -288, 1432 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371946" type="Sprite" parent="Board"]
+position = Vector2( -1440, 1432 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371947" type="Sprite" parent="Board"]
+position = Vector2( 864, 1432 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371948" type="Sprite" parent="Board"]
+position = Vector2( 1440, 1432 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371949" type="Sprite" parent="Board"]
+position = Vector2( 288, 1432 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371950" type="Sprite" parent="Board"]
+position = Vector2( -864, 2008 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371951" type="Sprite" parent="Board"]
+position = Vector2( -288, 2008 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371952" type="Sprite" parent="Board"]
+position = Vector2( -1440, 2008 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371953" type="Sprite" parent="Board"]
+position = Vector2( 864, 2008 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371954" type="Sprite" parent="Board"]
+position = Vector2( 1440, 2008 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371955" type="Sprite" parent="Board"]
+position = Vector2( 288, 2008 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371938" type="Sprite" parent="Board"]
+position = Vector2( 864, -872 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371939" type="Sprite" parent="Board"]
+position = Vector2( 1440, -872 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371940" type="Sprite" parent="Board"]
+position = Vector2( 288, -872 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371941" type="Sprite" parent="Board"]
+position = Vector2( 864, -296 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371942" type="Sprite" parent="Board"]
+position = Vector2( 1440, -296 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="Polka-dots-78765371943" type="Sprite" parent="Board"]
+position = Vector2( 288, -296 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="HelloThere" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HelloThere"]
+
+[node name="ColorRect2" type="ColorRect" parent="HelloThere/CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -720.0
+margin_top = -672.0
+margin_right = 720.0
+margin_bottom = -334.0
+color = Color( 0.929412, 0.929412, 0.929412, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HelloThere/CanvasLayer/ColorRect2"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 1423.0
+margin_bottom = 333.0
+
+[node name="Expandable1" type="HBoxContainer" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer"]
+margin_right = 1516.0
+margin_bottom = 300.0
+
+[node name="Experiments" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+margin_right = 300.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1/Experiments"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -111.0
+margin_top = -20.0
+margin_right = 117.0
+margin_bottom = 21.0
+theme = ExtResource( 3 )
+text = "Mass on Spring"
+align = 1
+
+[node name="Experiments3" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+margin_left = 304.0
+margin_right = 604.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1/Experiments3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -20.0
+margin_right = 132.0
+margin_bottom = 21.0
+theme = ExtResource( 3 )
+text = "Simple Pendulum"
+align = 1
+
+[node name="Experiments2" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+margin_left = 608.0
+margin_right = 908.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1/Experiments2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -132.0
+margin_top = -20.0
+margin_right = 131.0
+margin_bottom = 21.0
+theme = ExtResource( 3 )
+text = "Yungs Double Slit"
+align = 1
+
+[node name="Experiments4" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+margin_left = 912.0
+margin_right = 1212.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1/Experiments4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -132.0
+margin_top = -20.0
+margin_right = 131.0
+margin_bottom = 21.0
+theme = ExtResource( 3 )
+text = "Standing Wave"
+align = 1
+
+[node name="Experiments5" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+margin_left = 1216.0
+margin_right = 1516.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1/Experiments5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -132.0
+margin_top = -20.0
+margin_right = 131.0
+margin_bottom = 21.0
+theme = ExtResource( 3 )
+text = "Standing Wave"
+align = 1
+
+[node name="ColorRect" type="ColorRect" parent="HelloThere/CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -720.0
+margin_top = -338.0
+margin_right = 720.0
+
+[node name="MainExpandables" type="HBoxContainer" parent="HelloThere/CanvasLayer/ColorRect"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -319.0
+margin_right = -25.0
+margin_bottom = -19.0
+
+[node name="Experiments" type="Panel" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables"]
+margin_right = 300.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables/Experiments"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -94.0
+margin_top = -21.0
+margin_right = 95.0
+margin_bottom = 20.0
+theme = ExtResource( 3 )
+text = "Experiments"
+align = 1
+
+[node name="Graphs" type="Panel" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables"]
+margin_left = 304.0
+margin_right = 604.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables/Graphs"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -94.0
+margin_top = -21.0
+margin_right = 95.0
+margin_bottom = 20.0
+theme = ExtResource( 3 )
+text = "Graphs"
+align = 1
+
+[node name="Tools" type="Panel" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables"]
+margin_left = 608.0
+margin_right = 908.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables/Tools"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -94.0
+margin_top = -21.0
+margin_right = 95.0
+margin_bottom = 20.0
+theme = ExtResource( 3 )
+text = "Tools"
+align = 1
+
+[node name="Settings" type="Panel" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables"]
+margin_left = 912.0
+margin_right = 1212.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables/Settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -94.0
+margin_top = -21.0
+margin_right = 95.0
+margin_bottom = 20.0
+theme = ExtResource( 3 )
+text = "Settings"
+align = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HelloThere/CanvasLayer"]
+position = Vector2( 1258, 2240 )
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 4 )
+shape = SubResource( 1 )
