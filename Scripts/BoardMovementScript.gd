@@ -6,6 +6,6 @@ var VelocityVector : Vector2 = Vector2.ZERO
 func _process(delta):
 	pass
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventScreenDrag:
 		position -= event.relative

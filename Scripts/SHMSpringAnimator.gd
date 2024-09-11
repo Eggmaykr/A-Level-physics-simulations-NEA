@@ -33,7 +33,7 @@ func _process(delta):
 
 
 func _on_SpringConstantSlider_value_changed(value):
-	get_parent().get_node("EditableValues/SpringConstantSlider/ParameterValue").text = str(value)
+	get_parent().get_parent().get_node("Expandable/EditableValues/SpringConstantSlider/ParameterValue").text = str(value)
 	Spring_Constant = value
 	Period = 2*PI*sqrt(MassKg/Spring_Constant)
 	Frequency = 1/Period
@@ -41,7 +41,7 @@ func _on_SpringConstantSlider_value_changed(value):
 	Multiplier = 1/OriginalLengthM
 
 func _on_MassSlider_value_changed(value):
-	get_parent().get_node("EditableValues/MassSlider/ParameterValue").text = str(value)
+	get_parent().get_parent().get_node("Expandable/EditableValues/MassSlider/ParameterValue").text = str(value)
 	get_node("Weight/Label").text = str(value) + "kg"
 	# 1:20
 	MassKg = value
