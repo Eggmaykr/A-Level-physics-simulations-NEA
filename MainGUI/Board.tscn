@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://polka-dots-7876537_1920.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/BoardMovementScript.gd" type="Script" id=2]
 [ext_resource path="res://MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://list.png" type="Texture" id=4]
-[ext_resource path="res://MainGUI/ExperimentElement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://MainGUI/InstanceSelector.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -218,16 +217,22 @@ margin_right = 1423.0
 margin_bottom = 333.0
 
 [node name="Expandable1" type="HBoxContainer" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer"]
-margin_right = 1516.0
+margin_right = 1820.0
 margin_bottom = 300.0
 
 [node name="Experiments" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
 Scene_Path = "res://MainGUI/ExperimentElement.tscn"
 Show_Name = "Mass on Spring"
 
-[node name="Experiments3" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+[node name="Experiments6" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
 margin_left = 304.0
 margin_right = 604.0
+Scene_Path = "res://Experiments/StandingWavesExperiment.tscn"
+Show_Name = "StandingWave"
+
+[node name="Experiments3" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+margin_left = 608.0
+margin_right = 908.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
@@ -246,8 +251,8 @@ text = "Simple Pendulum"
 align = 1
 
 [node name="Experiments2" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
-margin_left = 608.0
-margin_right = 908.0
+margin_left = 912.0
+margin_right = 1212.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
@@ -266,8 +271,8 @@ text = "Yungs Double Slit"
 align = 1
 
 [node name="Experiments4" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
-margin_left = 912.0
-margin_right = 1212.0
+margin_left = 1216.0
+margin_right = 1516.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
@@ -286,8 +291,8 @@ text = "Standing Wave"
 align = 1
 
 [node name="Experiments5" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
-margin_left = 1216.0
-margin_right = 1516.0
+margin_left = 1520.0
+margin_right = 1820.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
@@ -410,6 +415,3 @@ pressed = ExtResource( 4 )
 shape = SubResource( 1 )
 
 [node name="Items" type="Node2D" parent="."]
-
-[node name="Node2D" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 476, 591 )

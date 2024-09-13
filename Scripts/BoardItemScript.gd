@@ -42,6 +42,7 @@ func _unhandled_input(event):
 					Open = false
 					get_node("Expandable/Opener").play_backwards("Open_Close")
 				Selected = false
+				self.z_index = 0
 				get_node("Selected/Opener").play_backwards("OpenClose")
 
 func _on_Delete_pressed():
@@ -52,6 +53,7 @@ func _on_Main_gui_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed == true:
 			Selected = true
+			self.z_index = 1
 			get_node("Selected/Opener").play("OpenClose")
 
 
@@ -60,6 +62,7 @@ func _on_Close_pressed():
 		Open = false
 		get_node("Expandable/Opener").play_backwards("Open_Close")
 	Selected = false
+	self.z_index = 0
 	get_node("Selected/Opener").play_backwards("OpenClose")
 
 
@@ -67,4 +70,7 @@ func _on_JoystickAnalogue_gui_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed == true:
 			Moving = true
+
+
+
 
