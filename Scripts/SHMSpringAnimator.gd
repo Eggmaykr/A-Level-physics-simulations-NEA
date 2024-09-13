@@ -18,18 +18,14 @@ var Multiplier : float = 0
 func _ready():
 	Period = 2*PI*sqrt(MassKg/Spring_Constant)
 	Frequency = 1/Period
-	print(Period, MassKg)
 	AngularSpeed = 2*PI*Frequency
 	Multiplier = 1/OriginalLengthM
 
 func _process(delta):
-	print(delta)
 	SecondsPassed += delta
-	print(cos(AngularSpeed*SecondsPassed))
 	Displacement = MaximumAmplitude*cos(AngularSpeed*SecondsPassed)
 	get_node("Spring").rect_scale.y = 1 + Displacement*Multiplier
 	get_node("Weight").rect_global_position = get_node("Spring/WeightPosition").rect_global_position
-	print(get_node("Spring").rect_scale.y, " ", Period)
 
 
 func _on_SpringConstantSlider_value_changed(value):

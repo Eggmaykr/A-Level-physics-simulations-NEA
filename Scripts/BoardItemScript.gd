@@ -2,6 +2,7 @@ extends Node2D
 
 var Open = false
 var Moving = false
+var Selected = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -34,12 +35,13 @@ func _input(event):
 			self.position += event.relative
 
 func _unhandled_input(event):
-	if get_node("Selected").visible == true:
+	if Selected == true:
 		if event is InputEventScreenTouch:
 			if event.pressed == false:
 				if Open == true:
 					Open = false
 					get_node("Expandable/Opener").play_backwards("Open_Close")
+				Selected = false
 				get_node("Selected/Opener").play_backwards("OpenClose")
 
 func _on_Delete_pressed():
@@ -49,6 +51,7 @@ func _on_Delete_pressed():
 func _on_Main_gui_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed == true:
+			Selected = true
 			get_node("Selected/Opener").play("OpenClose")
 
 
@@ -56,11 +59,9 @@ func _on_Close_pressed():
 	if Open == true:
 		Open = false
 		get_node("Expandable/Opener").play_backwards("Open_Close")
+	Selected = false
 	get_node("Selected/Opener").play_backwards("OpenClose")
 
-
-func _on_Move_pressed():
-	pass # Replace with function body.
 
 func _on_JoystickAnalogue_gui_input(event):
 	if event is InputEventScreenTouch:

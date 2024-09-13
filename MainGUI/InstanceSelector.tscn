@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/InstanceSelectorScript.gd" type="Script" id=2]
+
+[node name="Experiments" type="Panel"]
+margin_right = 300.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -111.0
+margin_top = -20.0
+margin_right = 117.0
+margin_bottom = 21.0
+theme = ExtResource( 1 )
+text = "Mass on Spring"
+align = 1
+
+[connection signal="gui_input" from="." to="." method="_on_Experiments_gui_input"]
