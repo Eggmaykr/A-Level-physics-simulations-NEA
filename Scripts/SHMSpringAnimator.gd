@@ -52,7 +52,5 @@ func _on_Pause_gui_input(event):
 		if event.pressed == true:
 			if get_parent().get_parent().get_node("Selected/Pause").pressed == true:
 				set_process(true)
-				get_parent().get_parent().get_node("Selected/Pause").pressed = false
 			else:
 				set_process(false)
-				get_parent().get_parent().get_node("Selected/Pause").pressed = true

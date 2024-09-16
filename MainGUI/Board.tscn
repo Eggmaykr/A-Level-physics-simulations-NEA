@@ -1,10 +1,72 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://polka-dots-7876537_1920.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/BoardMovementScript.gd" type="Script" id=2]
 [ext_resource path="res://MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://list.png" type="Texture" id=4]
 [ext_resource path="res://MainGUI/InstanceSelector.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=2]
+resource_name = "OpenCloseExperiment"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 2222 ), Vector2( 0, 1888 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2222 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "OpenCloseTools"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Tools:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 2222 ), Vector2( 0, 1888 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Tools:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2222 ) ]
+}
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 244.86
@@ -199,45 +261,45 @@ script = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HelloThere"]
 
-[node name="ColorRect2" type="ColorRect" parent="HelloThere/CanvasLayer"]
+[node name="Experiment" type="ColorRect" parent="HelloThere/CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -720.0
-margin_top = -672.0
+margin_top = -338.0
 margin_right = 720.0
-margin_bottom = -334.0
+margin_bottom = 0.0012207
 color = Color( 0.929412, 0.929412, 0.929412, 1 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HelloThere/CanvasLayer/ColorRect2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HelloThere/CanvasLayer/Experiment"]
 margin_left = 16.0
 margin_top = 15.0
 margin_right = 1423.0
 margin_bottom = 333.0
 
-[node name="Expandable1" type="HBoxContainer" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer"]
+[node name="Expandable1" type="HBoxContainer" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer"]
 margin_right = 1820.0
 margin_bottom = 300.0
 
-[node name="Experiments" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
+[node name="Experiments" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
 Scene_Path = "res://MainGUI/ExperimentElement.tscn"
 Show_Name = "Mass on Spring"
 
-[node name="Experiments6" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
+[node name="Experiments6" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
 margin_left = 304.0
 margin_right = 604.0
 Scene_Path = "res://Experiments/StandingWavesExperiment.tscn"
 Show_Name = "StandingWave"
 
-[node name="Experiments3" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+[node name="Experiments3" type="Panel" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer/Expandable1"]
 margin_left = 608.0
 margin_right = 908.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1/Experiments3"]
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer/Expandable1/Experiments3"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -250,14 +312,14 @@ theme = ExtResource( 3 )
 text = "Simple Pendulum"
 align = 1
 
-[node name="Experiments2" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+[node name="Experiments2" type="Panel" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer/Expandable1"]
 margin_left = 912.0
 margin_right = 1212.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1/Experiments2"]
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer/Expandable1/Experiments2"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -270,14 +332,14 @@ theme = ExtResource( 3 )
 text = "Yungs Double Slit"
 align = 1
 
-[node name="Experiments4" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+[node name="Experiments4" type="Panel" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer/Expandable1"]
 margin_left = 1216.0
 margin_right = 1516.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1/Experiments4"]
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer/Expandable1/Experiments4"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -290,14 +352,14 @@ theme = ExtResource( 3 )
 text = "Standing Wave"
 align = 1
 
-[node name="Experiments5" type="Panel" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1"]
+[node name="Experiments5" type="Panel" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer/Expandable1"]
 margin_left = 1520.0
 margin_right = 1820.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect2/ScrollContainer/Expandable1/Experiments5"]
+[node name="Label" type="Label" parent="HelloThere/CanvasLayer/Experiment/ScrollContainer/Expandable1/Experiments5"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -309,6 +371,43 @@ margin_bottom = 21.0
 theme = ExtResource( 3 )
 text = "Standing Wave"
 align = 1
+
+[node name="Opener" type="AnimationPlayer" parent="HelloThere/CanvasLayer/Experiment"]
+anims/OpenCloseExperiment = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="Tools" type="ColorRect" parent="HelloThere/CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -720.0
+margin_top = -338.0
+margin_right = 720.0
+margin_bottom = 0.000488281
+color = Color( 0.929412, 0.929412, 0.929412, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HelloThere/CanvasLayer/Tools"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 1423.0
+margin_bottom = 333.0
+
+[node name="Expandable1" type="HBoxContainer" parent="HelloThere/CanvasLayer/Tools/ScrollContainer"]
+margin_right = 604.0
+margin_bottom = 300.0
+
+[node name="Experiments" parent="HelloThere/CanvasLayer/Tools/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
+Show_Name = "Timer"
+
+[node name="Experiments6" parent="HelloThere/CanvasLayer/Tools/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
+margin_left = 304.0
+margin_right = 604.0
+Show_Name = "Translator"
+
+[node name="Opener" type="AnimationPlayer" parent="HelloThere/CanvasLayer/Tools"]
+anims/OpenCloseTools = SubResource( 4 )
+anims/RESET = SubResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="HelloThere/CanvasLayer"]
 anchor_left = 0.5
@@ -415,3 +514,8 @@ pressed = ExtResource( 4 )
 shape = SubResource( 1 )
 
 [node name="Items" type="Node2D" parent="."]
+
+[connection signal="animation_finished" from="HelloThere/CanvasLayer/Experiment/Opener" to="HelloThere" method="_on_Opener_animation_finished"]
+[connection signal="animation_finished" from="HelloThere/CanvasLayer/Tools/Opener" to="HelloThere" method="_on_Opener_animation_finished"]
+[connection signal="gui_input" from="HelloThere/CanvasLayer/ColorRect/MainExpandables/Experiments" to="HelloThere" method="_on_Experiments_gui_input"]
+[connection signal="gui_input" from="HelloThere/CanvasLayer/ColorRect/MainExpandables/Tools" to="HelloThere" method="_on_Tools_gui_input"]

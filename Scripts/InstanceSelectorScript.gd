@@ -7,6 +7,8 @@ var AimPoint = preload("res://MainGUI/Package.tscn")
 var Dragged = false
 var DragObject = null
 
+func _ready():
+	get_node("Label").text = Show_Name
 func _input(event):
 	if Dragged == true:
 		if event is InputEventScreenTouch:
