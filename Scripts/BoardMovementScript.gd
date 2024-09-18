@@ -4,6 +4,7 @@ var FingerIndexes = []
 var VelocityVector : Vector2 = Vector2.ZERO
 var CurrentSelected = ""
 
+var Wiring = null
 
 # warning-ignore:unused_argument
 func _process(delta):

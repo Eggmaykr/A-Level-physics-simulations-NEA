@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/BoardItemScript.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/SWExperimentScript.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://setting.png" type="Texture" id=6]
 [ext_resource path="res://play.png" type="Texture" id=7]
 [ext_resource path="res://cross.png" type="Texture" id=8]
+[ext_resource path="res://socket.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/WireConnectionScript.gd" type="Script" id=10]
 
 [sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.913725, 0.913725, 0.913725, 1 )
@@ -118,6 +120,10 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 512, 512 )
+
 [node name="ExperimentHolder" type="Node2D"]
 z_as_relative = false
 script = ExtResource( 1 )
@@ -132,37 +138,35 @@ margin_bottom = 231.0
 custom_styles/panel = SubResource( 17 )
 
 [node name="EditableValues" type="VBoxContainer" parent="Expandable"]
-margin_left = 93.0
-margin_top = 4.0
-margin_right = 246.0
-margin_bottom = 136.0
+margin_left = 152.0
+margin_top = 9.0
+margin_right = 388.0
+margin_bottom = 141.0
 
 [node name="Wavelength" type="HSlider" parent="Expandable/EditableValues"]
-margin_right = 153.0
+margin_right = 236.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 64 )
 min_value = 1.0
 value = 1.0
 
 [node name="ParameterName" type="Label" parent="Expandable/EditableValues/Wavelength"]
-anchor_left = -0.444
-anchor_top = 0.003
-anchor_right = -0.444
-anchor_bottom = 0.003
-margin_left = 220.932
-margin_top = 14.808
-margin_right = 487.932
-margin_bottom = 67.608
+anchor_left = -0.993
+anchor_right = -0.993
+margin_left = 470.348
+margin_top = 15.0
+margin_right = 737.348
+margin_bottom = 67.8
 custom_colors/font_color = Color( 0.113725, 0.309804, 0.498039, 1 )
 custom_fonts/font = SubResource( 9 )
-text = "Wave Speed"
+text = "C"
 
 [node name="ParameterValue" type="Label" parent="Expandable/EditableValues/Wavelength"]
-anchor_left = -0.464
-anchor_right = -0.464
-margin_left = 2.992
+anchor_left = -0.993
+anchor_right = -0.993
+margin_left = 174.348
 margin_top = 15.0
-margin_right = 144.992
+margin_right = 316.348
 margin_bottom = 68.0
 custom_colors/font_color = Color( 0.113725, 0.309804, 0.498039, 1 )
 custom_fonts/font = SubResource( 9 )
@@ -170,7 +174,7 @@ text = "0.01"
 
 [node name="Frequency" type="HSlider" parent="Expandable/EditableValues"]
 margin_top = 68.0
-margin_right = 153.0
+margin_right = 236.0
 margin_bottom = 132.0
 rect_min_size = Vector2( 0, 64 )
 min_value = 0.001
@@ -179,27 +183,27 @@ step = 0.001
 value = 1.0
 
 [node name="ParameterName" type="Label" parent="Expandable/EditableValues/Frequency"]
-anchor_left = -0.464
-anchor_top = -1.059
-anchor_right = -0.464
-anchor_bottom = -1.059
-margin_left = 223.992
-margin_top = 80.776
-margin_right = 490.992
-margin_bottom = 133.576
+anchor_left = -0.971
+anchor_top = -1.062
+anchor_right = -0.971
+anchor_bottom = -1.062
+margin_left = 465.156
+margin_top = 80.968
+margin_right = 732.156
+margin_bottom = 133.768
 custom_colors/font_color = Color( 0.113725, 0.309804, 0.498039, 1 )
 custom_fonts/font = SubResource( 9 )
-text = "Freqency"
+text = "f"
 
 [node name="ParameterValue" type="Label" parent="Expandable/EditableValues/Frequency"]
-anchor_left = -0.464
-anchor_top = -1.125
-anchor_right = -0.464
-anchor_bottom = -1.125
-margin_left = 2.992
-margin_top = 85.0
-margin_right = 144.992
-margin_bottom = 138.0
+anchor_left = -0.971
+anchor_top = -1.062
+anchor_right = -0.971
+anchor_bottom = -1.062
+margin_left = 169.156
+margin_top = 80.968
+margin_right = 311.156
+margin_bottom = 133.968
 custom_colors/font_color = Color( 0.113725, 0.309804, 0.498039, 1 )
 custom_fonts/font = SubResource( 9 )
 text = "10.0"
@@ -295,6 +299,33 @@ width = 5.0
 joint_mode = 2
 sharp_limit = 1.0
 round_precision = 15
+
+[node name="WireConnection" type="Panel" parent="."]
+margin_left = 415.0
+margin_top = -61.0
+margin_right = 475.0
+margin_bottom = -1.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/panel = SubResource( 21 )
+script = ExtResource( 10 )
+
+[node name="WireConnection2" type="Panel" parent="."]
+margin_left = 479.0
+margin_top = 46.0
+margin_right = 539.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/panel = SubResource( 21 )
+script = ExtResource( 10 )
+
+[node name="WireConnection3" type="Panel" parent="."]
+margin_left = 479.0
+margin_top = 109.0
+margin_right = 539.0
+margin_bottom = 169.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/panel = SubResource( 21 )
+script = ExtResource( 10 )
 
 [connection signal="value_changed" from="Expandable/EditableValues/Wavelength" to="Main/Experiment" method="_on_Wavelength_value_changed"]
 [connection signal="value_changed" from="Expandable/EditableValues/Frequency" to="Main/Experiment" method="_on_Frequency_value_changed"]

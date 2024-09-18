@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://socket.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 512, 512 )
+
+[node name="WirePointer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = -60.0
+margin_top = -61.0
+margin_right = 60.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 120, 120 )
+custom_styles/panel = SubResource( 1 )
