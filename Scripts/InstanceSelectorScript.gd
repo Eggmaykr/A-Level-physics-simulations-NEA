@@ -5,7 +5,6 @@ export var Show_Name : String = ""
 
 var AimPoint = preload("res://MainGUI/Package.tscn")
 var Dragged = false
-var DragObject = null
 
 func _ready():
 	get_node("Label").text = Show_Name

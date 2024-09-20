@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/WireConnectionScript.gd" type="Script" id=1]
+[ext_resource path="res://socket.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 512, 512 )
+
+[node name="WireConnection" type="Panel"]
+margin_left = 415.0
+margin_top = -61.0
+margin_right = 475.0
+margin_bottom = -1.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/panel = SubResource( 21 )
+script = ExtResource( 1 )
+method_connected = "_Read_Variables"
+
+[connection signal="gui_input" from="." to="." method="_on_WireConnection_gui_input"]

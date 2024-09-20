@@ -71,10 +71,5 @@ func _on_JoystickAnalogue_gui_input(event):
 		if event.pressed == true:
 			Moving = true
 
-func Start_Wiring():
-	pass
-
-func Finish_Wiring(complete_state):
-	pass
 
 

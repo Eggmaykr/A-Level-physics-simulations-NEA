@@ -1,9 +1,57 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://socket.png" type="Texture" id=2]
+[ext_resource path="res://MainGUI/WireConnection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/TimerScript.gd" type="Script" id=3]
+[ext_resource path="res://cross.png" type="Texture" id=4]
+[ext_resource path="res://move-selection.png" type="Texture" id=5]
 [ext_resource path="res://trash-bin.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.4, 0.65098, 0.662745, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "OpenClose"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Selected:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 13, 100 ), Vector2( 13, 248 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Selected:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 13, 100 ) ]
+}
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -17,15 +65,53 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 512, 512 )
-
 [node name="ExperimentHolder" type="Node2D"]
 z_as_relative = false
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
+
+[node name="Selected" type="Panel" parent="."]
+margin_left = 13.0
+margin_top = 100.0
+margin_right = 467.0
+margin_bottom = 231.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Close" type="TextureButton" parent="Selected"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 123.0
+margin_top = -44.5
+margin_right = 635.0
+margin_bottom = 467.5
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 4 )
+
+[node name="JoystickAnalogue" type="Panel" parent="Selected"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -267.0
+margin_top = -93.5
+margin_right = 733.0
+margin_bottom = 906.5
+rect_min_size = Vector2( 1000, 1000 )
+rect_scale = Vector2( 0.2, 0.2 )
+custom_styles/panel = SubResource( 3 )
+
+[node name="Move-selection" type="Sprite" parent="Selected/JoystickAnalogue"]
+position = Vector2( 500, 500 )
+texture = ExtResource( 5 )
+
+[node name="Opener" type="AnimationPlayer" parent="Selected"]
+root_node = NodePath("../../Main")
+anims/OpenClose = SubResource( 4 )
+anims/RESET = SubResource( 5 )
 
 [node name="Main" type="Panel" parent="."]
 margin_right = 479.0
@@ -47,36 +133,36 @@ margin_bottom = 216.0
 
 [node name="TimeLeft" type="Label" parent="Main/Timer/VBoxContainer"]
 margin_right = 460.0
-margin_bottom = 41.0
+margin_bottom = 42.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Time Left:"
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Main/Timer/VBoxContainer"]
-margin_top = 45.0
+margin_top = 46.0
 margin_right = 460.0
-margin_bottom = 86.0
+margin_bottom = 88.0
 alignment = 1
 
 [node name="TimeSet" type="Label" parent="Main/Timer/VBoxContainer/HBoxContainer"]
-margin_right = 76.0
-margin_bottom = 41.0
+margin_right = 75.0
+margin_bottom = 42.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Time"
 valign = 1
 
 [node name="HSlider" type="HSlider" parent="Main/Timer/VBoxContainer/HBoxContainer"]
-margin_left = 80.0
-margin_right = 460.0
+margin_left = 79.0
+margin_right = 459.0
 margin_bottom = 41.0
 rect_min_size = Vector2( 380, 41 )
 
 [node name="CheckButton" type="CheckButton" parent="Main/Timer/VBoxContainer"]
-margin_top = 90.0
+margin_top = 92.0
 margin_right = 460.0
-margin_bottom = 136.433
+margin_bottom = 140.0
 theme = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
@@ -86,19 +172,18 @@ custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Repeat"
 
-[node name="Panel" type="Panel" parent="Main/Timer"]
-margin_left = 8.0
-margin_top = 196.0
-margin_right = 68.0
-margin_bottom = 256.0
-rect_min_size = Vector2( 60, 60 )
-custom_styles/panel = SubResource( 2 )
-
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Main/Timer"]
 position = Vector2( 373, 156 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 8 )
 pressed = ExtResource( 8 )
 
+[node name="WireConnection2" parent="." instance=ExtResource( 2 )]
+margin_left = 8.0
+margin_top = 196.0
+margin_right = 68.0
+margin_bottom = 256.0
+
 [connection signal="gui_input" from="Main" to="." method="_on_Main_gui_input"]
 [connection signal="timeout" from="Main/Timer/Timer" to="Main/Timer" method="_on_Timer_timeout"]
+[connection signal="pressed" from="Main/Timer/TouchScreenButton" to="Main/Timer" method="_on_TouchScreenButton_pressed"]

@@ -49,11 +49,16 @@ func _on_Frequency_value_changed(value):
 func _on_Pause_gui_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed == true:
-			print(get_parent().get_parent().get_node("Selected/Pause").pressed)
-			if get_parent().get_parent().get_node("Selected/Pause").pressed == true:
-				set_process(true)
-			elif get_parent().get_parent().get_node("Selected/Pause").pressed == false:
-				set_process(false)
-				print(get_parent().get_parent().get_node("Selected/Pause").pressed)
+			_Pause()
 
+func _Pause(_Black = false):
+	if is_processing() == false:
+		get_parent().get_parent().get_node("Selected/Pause").pressed = false
+		set_process(true)
+	elif is_processing() == false:
+		get_parent().get_parent().get_node("Selected/Pause").pressed = true
+		set_process(false)
+
+func _Read_Variables(_Black):
+	return [["Wavelength", Wavelength],["Frequency", FrequencyHertz]]
 

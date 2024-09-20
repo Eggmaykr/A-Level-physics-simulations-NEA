@@ -50,7 +50,12 @@ func _on_MassSlider_value_changed(value):
 func _on_Pause_gui_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed == true:
-			if get_parent().get_parent().get_node("Selected/Pause").pressed == true:
-				set_process(true)
-			else:
-				set_process(false)
+			_Pause()
+
+func _Pause():
+	if is_processing() == false:
+		get_parent().get_parent().get_node("Selected/Pause").pressed = false
+		set_process(true)
+	elif is_processing() == false:
+		get_parent().get_parent().get_node("Selected/Pause").pressed = true
+		set_process(false)
