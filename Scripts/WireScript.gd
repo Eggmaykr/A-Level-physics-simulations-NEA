@@ -1,12 +1,6 @@
 extends Line2D
 
-var ConnectFrom = null
-
-func _ready():
-	ConnectFrom._Connect_Wire(self)
-	print(points)
-
-func _Set_Up(Socket):
-	ConnectFrom = Socket
-	add_point(ConnectFrom.rect_global_position, 0)
-	add_point(ConnectFrom.rect_global_position, 1)
+func _Set_Up(pos1, pos2):
+	add_point(pos1, 0)
+	add_point(pos2, 1)
+	return self

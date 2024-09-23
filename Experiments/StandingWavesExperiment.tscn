@@ -305,7 +305,7 @@ margin_right = 539.0
 margin_bottom = 115.0
 Is_Reciever = true
 
-[node name="WireConnection3" parent="." instance=ExtResource( 9 )]
+[node name="Hello" parent="." instance=ExtResource( 9 )]
 margin_left = 479.0
 margin_top = 121.0
 margin_right = 539.0
