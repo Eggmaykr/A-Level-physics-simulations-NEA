@@ -3,4 +3,5 @@
 [ext_resource path="res://Scripts/WireScript.gd" type="Script" id=2]
 
 [node name="Wire" type="Line2D"]
+show_behind_parent = true
 script = ExtResource( 2 )
