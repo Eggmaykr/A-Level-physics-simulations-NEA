@@ -353,6 +353,10 @@ margin_right = 256.787
 margin_bottom = 501.333
 mouse_filter = 2
 
+[node name="Sockets" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
 [connection signal="value_changed" from="Expandable/EditableValues/MassSlider" to="Main/Experiment" method="_on_MassSlider_value_changed"]
 [connection signal="value_changed" from="Expandable/EditableValues/SpringConstantSlider" to="Main/Experiment" method="_on_SpringConstantSlider_value_changed"]
 [connection signal="pressed" from="Expandable/Delete" to="." method="_on_Delete_pressed"]

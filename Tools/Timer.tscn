@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://MainGUI/WireConnection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/TimerScript.gd" type="Script" id=3]
 [ext_resource path="res://cross.png" type="Texture" id=4]
 [ext_resource path="res://move-selection.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/BoardItemScript.gd" type="Script" id=6]
+[ext_resource path="res://play.png" type="Texture" id=7]
 [ext_resource path="res://trash-bin.png" type="Texture" id=8]
+[ext_resource path="res://pause.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.913725, 0.913725, 0.913725, 1 )
@@ -67,6 +70,7 @@ corner_radius_bottom_left = 12
 
 [node name="ExperimentHolder" type="Node2D"]
 z_as_relative = false
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
@@ -121,6 +125,7 @@ custom_styles/panel = SubResource( 1 )
 [node name="Timer" type="Control" parent="Main"]
 margin_right = 479.0
 margin_bottom = 217.0
+mouse_filter = 2
 script = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="Main/Timer"]
@@ -130,6 +135,7 @@ margin_left = 12.0
 margin_top = 21.0
 margin_right = 472.0
 margin_bottom = 216.0
+mouse_filter = 2
 
 [node name="TimeLeft" type="Label" parent="Main/Timer/VBoxContainer"]
 margin_right = 460.0
@@ -143,6 +149,7 @@ valign = 1
 margin_top = 46.0
 margin_right = 460.0
 margin_bottom = 88.0
+mouse_filter = 2
 alignment = 1
 
 [node name="TimeSet" type="Label" parent="Main/Timer/VBoxContainer/HBoxContainer"]
@@ -158,6 +165,8 @@ margin_left = 79.0
 margin_right = 459.0
 margin_bottom = 41.0
 rect_min_size = Vector2( 380, 41 )
+max_value = 10.0
+step = 0.1
 
 [node name="CheckButton" type="CheckButton" parent="Main/Timer/VBoxContainer"]
 margin_top = 92.0
@@ -178,12 +187,28 @@ scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 8 )
 pressed = ExtResource( 8 )
 
-[node name="WireConnection" parent="." instance=ExtResource( 2 )]
-margin_left = 8.0
-margin_top = 196.0
-margin_right = 68.0
-margin_bottom = 256.0
+[node name="Start" type="TouchScreenButton" parent="Main/Timer"]
+position = Vector2( 12, 156 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 9 )
 
+[node name="Sockets" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="WireConnection" parent="Sockets" instance=ExtResource( 2 )]
+margin_left = -62.0
+margin_top = 196.0
+margin_right = -2.0
+margin_bottom = 256.0
+method_limit = "_Pause"
+
+[connection signal="pressed" from="Selected/Close" to="." method="_on_Close_pressed"]
+[connection signal="gui_input" from="Selected/JoystickAnalogue" to="." method="_on_JoystickAnalogue_gui_input"]
 [connection signal="gui_input" from="Main" to="." method="_on_Main_gui_input"]
 [connection signal="timeout" from="Main/Timer/Timer" to="Main/Timer" method="_on_Timer_timeout"]
+[connection signal="value_changed" from="Main/Timer/VBoxContainer/HBoxContainer/HSlider" to="Main/Timer" method="_on_HSlider_value_changed"]
+[connection signal="gui_input" from="Main/Timer/VBoxContainer/CheckButton" to="Main/Timer" method="_on_CheckButton_gui_input"]
 [connection signal="pressed" from="Main/Timer/TouchScreenButton" to="Main/Timer" method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="Main/Timer/Start" to="Main/Timer" method="_on_Start_pressed"]

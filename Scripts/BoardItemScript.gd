@@ -33,6 +33,14 @@ func _input(event):
 				Moving = false
 		elif event is InputEventScreenDrag:
 			self.position += event.relative
+		var OwnSockets = get_node("Sockets").get_children()
+		for Socket in OwnSockets:
+			if Socket.WireConnected:
+				if Socket.Is_Reciever == true:
+					Socket.WireConnected.points[1] = Socket.rect_global_position+Vector2(30,30)
+				elif Socket.Is_Reciever == false:
+					Socket.WireConnected.points[0] = Socket.rect_global_position+Vector2(30,30)
+			
 
 func _unhandled_input(event):
 	if Selected == true:

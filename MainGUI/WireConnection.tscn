@@ -7,12 +7,11 @@
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 512, 512 )
 
-[node name="WireConnection" type="Panel"]
-margin_left = 415.0
-margin_top = -61.0
-margin_right = 475.0
-margin_bottom = -1.0
+[node name="WireConnection" type="Panel" groups=["Socket"]]
+margin_right = 60.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 30, 30 )
 custom_styles/panel = SubResource( 21 )
 script = ExtResource( 1 )
 method_connected = "_Read_Variables"

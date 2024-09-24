@@ -295,22 +295,40 @@ joint_mode = 2
 sharp_limit = 1.0
 round_precision = 15
 
-[node name="WireConnection" parent="." instance=ExtResource( 9 )]
+[node name="Sockets" type="Control" parent="."]
+
+[node name="WireConnection" parent="Sockets" instance=ExtResource( 9 )]
+visible = false
+margin_left = 388.0
+margin_top = -61.0
+margin_right = 448.0
+margin_bottom = -1.0
 Is_Reciever = true
 
-[node name="WireConnection2" parent="." instance=ExtResource( 9 )]
+[node name="WireConnection2" parent="Sockets" instance=ExtResource( 9 )]
+visible = false
 margin_left = 479.0
 margin_top = 55.0
 margin_right = 539.0
 margin_bottom = 115.0
 Is_Reciever = true
 
-[node name="Hello" parent="." instance=ExtResource( 9 )]
+[node name="WireConnection3" parent="Sockets" instance=ExtResource( 9 )]
+visible = false
 margin_left = 479.0
 margin_top = 121.0
 margin_right = 539.0
 margin_bottom = 181.0
 Is_Reciever = true
+
+[node name="WireConnection4" parent="Sockets" instance=ExtResource( 9 )]
+visible = false
+margin_left = 173.0
+margin_top = 265.0
+margin_right = 233.0
+margin_bottom = 325.0
+Is_Reciever = true
+method_connected = "_Pause"
 
 [connection signal="value_changed" from="Expandable/EditableValues/Wavelength" to="Main/Experiment" method="_on_Wavelength_value_changed"]
 [connection signal="value_changed" from="Expandable/EditableValues/Frequency" to="Main/Experiment" method="_on_Frequency_value_changed"]

@@ -53,10 +53,10 @@ func _on_Pause_gui_input(event):
 
 func _Pause(_Black = false):
 	if is_processing() == false:
-		get_parent().get_parent().get_node("Selected/Pause").pressed = false
-		set_process(true)
-	elif is_processing() == false:
 		get_parent().get_parent().get_node("Selected/Pause").pressed = true
+		set_process(true)
+	elif is_processing() == true:
+		get_parent().get_parent().get_node("Selected/Pause").pressed = false
 		set_process(false)
 
 func _Read_Variables(_Black):

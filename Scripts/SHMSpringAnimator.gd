@@ -52,10 +52,10 @@ func _on_Pause_gui_input(event):
 		if event.pressed == true:
 			_Pause()
 
-func _Pause():
+func _Pause(_Blank = false):
 	if is_processing() == false:
-		get_parent().get_parent().get_node("Selected/Pause").pressed = false
-		set_process(true)
-	elif is_processing() == false:
 		get_parent().get_parent().get_node("Selected/Pause").pressed = true
+		set_process(true)
+	elif is_processing() == true:
+		get_parent().get_parent().get_node("Selected/Pause").pressed = false
 		set_process(false)
