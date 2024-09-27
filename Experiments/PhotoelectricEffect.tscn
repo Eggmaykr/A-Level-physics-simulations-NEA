@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 210.0
+margin_top = 137.0
+margin_right = 267.0
+margin_bottom = 394.0
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 440, 97 )
