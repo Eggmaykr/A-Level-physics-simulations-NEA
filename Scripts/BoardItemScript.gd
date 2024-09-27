@@ -54,7 +54,8 @@ func _unhandled_input(event):
 				get_node("Selected/Opener").play_backwards("OpenClose")
 
 func _on_Delete_pressed():
-	self.queue_free()
+	if Open == true:
+		self.queue_free()
 
 
 func _on_Main_gui_input(event):
