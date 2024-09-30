@@ -1,0 +1,365 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Scripts/BoardItemScript.gd" type="Script" id=1]
+[ext_resource path="res://move-selection.png" type="Texture" id=2]
+[ext_resource path="res://trash-bin.png" type="Texture" id=3]
+[ext_resource path="res://pause.png" type="Texture" id=4]
+[ext_resource path="res://MainGUI/WireConnection.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/ExperimentPhotoelectricEffectScript.gd" type="Script" id=6]
+[ext_resource path="res://setting.png" type="Texture" id=7]
+[ext_resource path="res://play.png" type="Texture" id=8]
+[ext_resource path="res://cross.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.4, 0.65098, 0.662745, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="DynamicFontData" id=7]
+override_oversampling = 20.0
+font_path = "res://Fonts/WorkSans-VariableFont_wght.ttf"
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+font_data = SubResource( 7 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "Open_Close"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.535887, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 31 ), Vector2( 462, 31 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 31 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.4, 0.65098, 0.662745, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Animation" id=19]
+resource_name = "OpenClose"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Selected:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 13, 100 ), Vector2( 13, 248 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Selected:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 13, 100 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.407843, 0.807843, 0.827451, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.160784, 0.560784, 0, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ExperimentHolder" type="Node2D"]
+z_as_relative = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Expandable" type="Panel" parent="."]
+margin_top = 31.0
+margin_right = 479.0
+margin_bottom = 231.0
+custom_styles/panel = SubResource( 17 )
+
+[node name="EditableValues" type="VBoxContainer" parent="Expandable"]
+margin_left = 152.0
+margin_top = 9.0
+margin_right = 388.0
+margin_bottom = 141.0
+
+[node name="Wavelength" type="HSlider" parent="Expandable/EditableValues"]
+margin_right = 236.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 64 )
+min_value = 1.0
+max_value = 6000.0
+step = 10.0
+value = 1.0
+
+[node name="ParameterName" type="Label" parent="Expandable/EditableValues/Wavelength"]
+anchor_left = -0.993
+anchor_right = -0.993
+margin_left = 470.348
+margin_top = 15.0
+margin_right = 737.348
+margin_bottom = 67.8
+custom_colors/font_color = Color( 0.113725, 0.309804, 0.498039, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "WvLn"
+
+[node name="ParameterValue" type="Label" parent="Expandable/EditableValues/Wavelength"]
+anchor_left = -0.993
+anchor_right = -0.993
+margin_left = 174.348
+margin_top = 15.0
+margin_right = 316.348
+margin_bottom = 68.0
+custom_colors/font_color = Color( 0.113725, 0.309804, 0.498039, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "0.01"
+
+[node name="Frequency" type="HSlider" parent="Expandable/EditableValues"]
+margin_top = 68.0
+margin_right = 236.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 0, 64 )
+min_value = 0.001
+max_value = 10.0
+step = 0.001
+value = 1.0
+
+[node name="ParameterName" type="Label" parent="Expandable/EditableValues/Frequency"]
+anchor_left = -0.971
+anchor_top = -1.062
+anchor_right = -0.971
+anchor_bottom = -1.062
+margin_left = 465.156
+margin_top = 80.968
+margin_right = 732.156
+margin_bottom = 133.768
+custom_colors/font_color = Color( 0.113725, 0.309804, 0.498039, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "f"
+
+[node name="ParameterValue" type="Label" parent="Expandable/EditableValues/Frequency"]
+anchor_left = -0.971
+anchor_top = -1.062
+anchor_right = -0.971
+anchor_bottom = -1.062
+margin_left = 169.156
+margin_top = 80.968
+margin_right = 311.156
+margin_bottom = 133.968
+custom_colors/font_color = Color( 0.113725, 0.309804, 0.498039, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "10.0"
+
+[node name="Delete" type="TouchScreenButton" parent="Expandable"]
+position = Vector2( 417, 140 )
+scale = Vector2( 0.1, 0.1 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 3 )
+
+[node name="Opener" type="AnimationPlayer" parent="Expandable"]
+anims/Open_Close = SubResource( 14 )
+anims/RESET = SubResource( 15 )
+
+[node name="Selected" type="Panel" parent="."]
+margin_left = 13.0
+margin_top = 100.0
+margin_right = 467.0
+margin_bottom = 231.0
+custom_styles/panel = SubResource( 18 )
+
+[node name="Settings" type="TextureButton" parent="Selected"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 19.0
+margin_top = -44.5
+margin_right = 531.0
+margin_bottom = 467.5
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 7 )
+
+[node name="Close" type="TextureButton" parent="Selected"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 123.0
+margin_top = -44.5
+margin_right = 635.0
+margin_bottom = 467.5
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+
+[node name="Pause" type="TextureButton" parent="Selected"]
+margin_left = 127.0
+margin_top = 21.0
+margin_right = 639.0
+margin_bottom = 533.0
+rect_scale = Vector2( 0.2, 0.2 )
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 8 )
+
+[node name="JoystickAnalogue" type="Panel" parent="Selected"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -267.0
+margin_top = -93.5
+margin_right = 733.0
+margin_bottom = 906.5
+rect_min_size = Vector2( 1000, 1000 )
+rect_scale = Vector2( 0.2, 0.2 )
+custom_styles/panel = SubResource( 16 )
+
+[node name="Move-selection" type="Sprite" parent="Selected/JoystickAnalogue"]
+position = Vector2( 500, 500 )
+texture = ExtResource( 2 )
+
+[node name="Opener" type="AnimationPlayer" parent="Selected"]
+root_node = NodePath("../../Main")
+anims/OpenClose = SubResource( 19 )
+anims/RESET = SubResource( 20 )
+
+[node name="Main" type="Panel" parent="."]
+margin_right = 479.0
+margin_bottom = 265.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Experiment" type="Control" parent="Main"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 6 )
+
+[node name="LightWave" type="Line2D" parent="Main/Experiment"]
+position = Vector2( 190, 20 )
+rotation = 2.51327
+width = 5.0
+default_color = Color( 1, 0, 0.0166664, 1 )
+
+[node name="Panel" type="Panel" parent="Main/Experiment"]
+self_modulate = Color( 0.792157, 0.690196, 0.12549, 1 )
+margin_left = 62.0
+margin_top = 56.0
+margin_right = 84.0
+margin_bottom = 190.0
+custom_styles/panel = SubResource( 21 )
+
+[node name="Electron" type="Panel" parent="Main/Experiment"]
+margin_left = 74.0
+margin_top = 152.0
+margin_right = 84.0
+margin_bottom = 162.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Sockets" type="Control" parent="."]
+
+[node name="WireConnection" parent="Sockets" instance=ExtResource( 5 )]
+visible = false
+margin_left = 388.0
+margin_top = -61.0
+margin_right = 448.0
+margin_bottom = -1.0
+Is_Reciever = true
+
+[node name="WireConnection2" parent="Sockets" instance=ExtResource( 5 )]
+visible = false
+margin_left = 479.0
+margin_top = 55.0
+margin_right = 539.0
+margin_bottom = 115.0
+Is_Reciever = true
+
+[node name="WireConnection3" parent="Sockets" instance=ExtResource( 5 )]
+visible = false
+margin_left = 479.0
+margin_top = 121.0
+margin_right = 539.0
+margin_bottom = 181.0
+Is_Reciever = true
+
+[node name="WireConnection4" parent="Sockets" instance=ExtResource( 5 )]
+visible = false
+margin_left = 173.0
+margin_top = 265.0
+margin_right = 233.0
+margin_bottom = 325.0
+Is_Reciever = true
+method_connected = "_Pause"
+
+[connection signal="value_changed" from="Expandable/EditableValues/Wavelength" to="Main/Experiment" method="_on_Wavelength_value_changed"]
+[connection signal="pressed" from="Expandable/Delete" to="." method="_on_Delete_pressed"]
+[connection signal="pressed" from="Selected/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Selected/Close" to="." method="_on_Close_pressed"]
+[connection signal="gui_input" from="Selected/JoystickAnalogue" to="." method="_on_JoystickAnalogue_gui_input"]
+[connection signal="gui_input" from="Main" to="." method="_on_Main_gui_input"]
