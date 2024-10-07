@@ -9,6 +9,7 @@
 [ext_resource path="res://setting.png" type="Texture" id=7]
 [ext_resource path="res://play.png" type="Texture" id=8]
 [ext_resource path="res://cross.png" type="Texture" id=9]
+[ext_resource path="res://ExperimentParts/Electron.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.913725, 0.913725, 0.913725, 1 )
@@ -121,13 +122,6 @@ corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.160784, 0.560784, 0, 1 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [node name="ExperimentHolder" type="Node2D"]
 z_as_relative = false
@@ -315,12 +309,8 @@ margin_right = 84.0
 margin_bottom = 190.0
 custom_styles/panel = SubResource( 21 )
 
-[node name="Electron" type="Panel" parent="Main/Experiment"]
-margin_left = 74.0
-margin_top = 152.0
-margin_right = 84.0
-margin_bottom = 162.0
-custom_styles/panel = SubResource( 2 )
+[node name="Electron" parent="Main/Experiment" instance=ExtResource( 10 )]
+rotation = -1.5708
 
 [node name="Sockets" type="Control" parent="."]
 
