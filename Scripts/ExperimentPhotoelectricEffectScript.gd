@@ -3,7 +3,10 @@ extends Control
 var TimeElapsed : float = 0.0
 var FrequencyHertz : float = 0.0
 var WavelengthMetersXTenMillion : float = 100.0
-
+var WorkFunctionJoules : float = 10.0
+var PlanksConstantJoulesPerSecond : float = 6.62607015*pow(10.0,-32.0)
+var KineticEnergy : float = 0.0
+var MassOfElectron : float = 9.1093837*pow(10.0,-31.0)
 
 func _ready():
 	for i in range(100):
