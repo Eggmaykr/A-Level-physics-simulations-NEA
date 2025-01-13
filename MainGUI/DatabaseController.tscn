@@ -1,25 +1,25 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://Scripts/ExperimentLinkScript.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/ExperimentLinkScript.gd" type="Script" id=1]
+[ext_resource path="res://MainTheme.tres" type="Theme" id=2]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.501961, 0.756863, 0.843137, 1 )
 border_width_bottom = 5
 border_color = Color( 0.337255, 0.568627, 0.607843, 1 )
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="DynamicFontData" id=6]
+[sub_resource type="DynamicFontData" id=1]
 override_oversampling = 20.0
 font_path = "res://Fonts/Lora-VariableFont_wght.ttf"
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 95
 outline_color = Color( 0.235294, 0.388235, 0.501961, 1 )
-font_data = SubResource( 6 )
+font_data = SubResource( 1 )
 
-[sub_resource type="DynamicFontData" id=7]
+[sub_resource type="DynamicFontData" id=4]
 override_oversampling = 20.0
 font_path = "res://Fonts/WorkSans-VariableFont_wght.ttf"
 
@@ -27,11 +27,12 @@ font_path = "res://Fonts/WorkSans-VariableFont_wght.ttf"
 size = 50
 outline_size = 1
 outline_color = Color( 0.188235, 0.235294, 0.517647, 1 )
-font_data = SubResource( 7 )
+font_data = SubResource( 4 )
 
-[node name="Control" type="Control"]
+[node name="DatabaseController" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -3257, -104 )
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -41,7 +42,7 @@ anchor_bottom = 1.0
 anchor_right = 1.0
 anchor_bottom = 0.064
 margin_bottom = 0.159988
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 2 )
 
 [node name="Label" type="Label" parent="Title"]
 anchor_left = 0.5
@@ -52,8 +53,8 @@ margin_right = 324.0
 margin_bottom = 144.0
 custom_colors/font_color = Color( 0, 0.145098, 0.376471, 1 )
 custom_constants/shadow_offset_x = 310
-custom_fonts/font = SubResource( 2 )
-text = "Physics"
+custom_fonts/font = SubResource( 3 )
+text = "Database"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -61,6 +62,7 @@ margin_left = 108.0
 margin_top = 369.0
 margin_right = 1337.0
 margin_bottom = 1947.0
+rect_pivot_offset = Vector2( -2826, 80 )
 
 [node name="ExperimentLink" type="Panel" parent="VBoxContainer"]
 margin_right = 1229.0
@@ -70,8 +72,8 @@ grow_vertical = 2
 rect_min_size = Vector2( 372, 384 )
 size_flags_horizontal = 7
 size_flags_vertical = 3
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
 ExperimentPath = "res://MainGUI/Board.tscn"
 
 [node name="ExperimentName" type="Label" parent="VBoxContainer/ExperimentLink"]
@@ -85,7 +87,7 @@ margin_right = 614.5
 margin_bottom = 192.0
 custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
 custom_fonts/font = SubResource( 5 )
-text = "Open Whiteboard"
+text = "Load(Empty, create in whiteboard)"
 align = 1
 valign = 1
 autowrap = true
@@ -105,9 +107,9 @@ grow_vertical = 2
 rect_min_size = Vector2( 372, 384 )
 size_flags_horizontal = 7
 size_flags_vertical = 3
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
-ExperimentPath = "res://Experiments/SHM_Spring.tscn"
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+ExperimentPath = "res://MainGUI/Board.tscn"
 
 [node name="ExperimentName" type="Label" parent="VBoxContainer/ExperimentLink2"]
 anchor_left = 0.5
@@ -120,7 +122,7 @@ margin_right = 614.5
 margin_bottom = 192.0
 custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
 custom_fonts/font = SubResource( 5 )
-text = "Open Graph Editor"
+text = "Load(Empty, create in whiteboard)"
 align = 1
 valign = 1
 autowrap = true
@@ -140,9 +142,9 @@ grow_vertical = 2
 rect_min_size = Vector2( 372, 384 )
 size_flags_horizontal = 7
 size_flags_vertical = 3
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
-ExperimentPath = "res://Experiments/SHM_Spring.tscn"
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+ExperimentPath = "res://MainGUI/Board.tscn"
 
 [node name="ExperimentName" type="Label" parent="VBoxContainer/ExperimentLink3"]
 anchor_left = 0.5
@@ -155,7 +157,7 @@ margin_right = 614.5
 margin_bottom = 192.0
 custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
 custom_fonts/font = SubResource( 5 )
-text = "Manage Databases"
+text = "Load(Empty, create in whiteboard)"
 align = 1
 valign = 1
 autowrap = true
@@ -166,24 +168,20 @@ margin_right = 1229.0
 margin_bottom = 1190.18
 rect_min_size = Vector2( 0, 6.181 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="ExperimentLink4" type="Panel" parent="VBoxContainer"]
 margin_top = 1194.0
 margin_right = 1229.0
 margin_bottom = 1578.0
-
-[node name="ExperimentLink3" type="Panel" parent="VBoxContainer/HBoxContainer"]
-margin_right = 610.0
-margin_bottom = 384.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 372, 384 )
 size_flags_horizontal = 7
 size_flags_vertical = 3
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
-ExperimentPath = "res://Experiments/SHM_Spring.tscn"
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+ExperimentPath = "res://MainGUI/Board.tscn"
 
-[node name="ExperimentName" type="Label" parent="VBoxContainer/HBoxContainer/ExperimentLink3"]
+[node name="ExperimentName" type="Label" parent="VBoxContainer/ExperimentLink4"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -194,48 +192,18 @@ margin_right = 614.5
 margin_bottom = 192.0
 custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
 custom_fonts/font = SubResource( 5 )
-text = "Settings"
+text = "Load(Empty, create in whiteboard)"
 align = 1
 valign = 1
 autowrap = true
 
-[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
-margin_left = 614.0
-margin_right = 614.0
-margin_bottom = 384.0
-rect_min_size = Vector2( 0, 6.181 )
-
-[node name="ExperimentLink4" type="Panel" parent="VBoxContainer/HBoxContainer"]
-margin_left = 618.0
+[node name="Control4" type="Control" parent="VBoxContainer"]
+margin_top = 1582.0
 margin_right = 1229.0
-margin_bottom = 384.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 372, 384 )
-size_flags_horizontal = 7
-size_flags_vertical = 3
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
-ExperimentPath = "res://Experiments/SHM_Spring.tscn"
-
-[node name="ExperimentName" type="Label" parent="VBoxContainer/HBoxContainer/ExperimentLink4"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -614.5
-margin_top = -192.0
-margin_right = 614.5
-margin_bottom = 192.0
-custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
-custom_fonts/font = SubResource( 5 )
-text = "Exit"
-align = 1
-valign = 1
-autowrap = true
+margin_bottom = 1588.18
+rect_min_size = Vector2( 0, 6.181 )
 
 [connection signal="gui_input" from="VBoxContainer/ExperimentLink" to="VBoxContainer/ExperimentLink" method="_on_ExperimentLink_gui_input"]
 [connection signal="gui_input" from="VBoxContainer/ExperimentLink2" to="VBoxContainer/ExperimentLink2" method="_on_ExperimentLink_gui_input"]
 [connection signal="gui_input" from="VBoxContainer/ExperimentLink3" to="VBoxContainer/ExperimentLink3" method="_on_ExperimentLink_gui_input"]
-[connection signal="gui_input" from="VBoxContainer/HBoxContainer/ExperimentLink3" to="VBoxContainer/HBoxContainer/ExperimentLink3" method="_on_ExperimentLink_gui_input"]
-[connection signal="gui_input" from="VBoxContainer/HBoxContainer/ExperimentLink4" to="VBoxContainer/HBoxContainer/ExperimentLink4" method="_on_ExperimentLink_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/ExperimentLink4" to="VBoxContainer/ExperimentLink4" method="_on_ExperimentLink_gui_input"]

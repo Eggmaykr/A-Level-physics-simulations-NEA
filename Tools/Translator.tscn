@@ -1,0 +1,223 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/BoardItemScript.gd" type="Script" id=1]
+[ext_resource path="res://MainGUI/WireConnection.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Scripts/TimerScript.gd" type="Script" id=4]
+[ext_resource path="res://move-selection.png" type="Texture" id=5]
+[ext_resource path="res://trash-bin.png" type="Texture" id=6]
+[ext_resource path="res://refresh.png" type="Texture" id=7]
+[ext_resource path="res://cross.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.4, 0.65098, 0.662745, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "OpenClose"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Selected:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 13, 100 ), Vector2( 13, 248 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Selected:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 13, 100 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.407843, 0.807843, 0.827451, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="ExperimentHolder" type="Node2D"]
+z_as_relative = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Selected" type="Panel" parent="."]
+margin_left = 13.0
+margin_top = 100.0
+margin_right = 467.0
+margin_bottom = 231.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Close" type="TextureButton" parent="Selected"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 123.0
+margin_top = -44.5
+margin_right = 635.0
+margin_bottom = 467.5
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+
+[node name="JoystickAnalogue" type="Panel" parent="Selected"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -267.0
+margin_top = -93.5
+margin_right = 733.0
+margin_bottom = 906.5
+rect_min_size = Vector2( 1000, 1000 )
+rect_scale = Vector2( 0.2, 0.2 )
+custom_styles/panel = SubResource( 3 )
+
+[node name="Move-selection" type="Sprite" parent="Selected/JoystickAnalogue"]
+position = Vector2( 500, 500 )
+texture = ExtResource( 5 )
+
+[node name="Opener" type="AnimationPlayer" parent="Selected"]
+root_node = NodePath("../../Main")
+anims/OpenClose = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
+[node name="Main" type="Panel" parent="."]
+margin_right = 479.0
+margin_bottom = 503.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Timer" type="Control" parent="Main"]
+margin_right = 479.0
+margin_bottom = 217.0
+mouse_filter = 2
+script = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Timer"]
+margin_left = 12.0
+margin_top = 21.0
+margin_right = 472.0
+margin_bottom = 216.0
+mouse_filter = 2
+
+[node name="DataTable" type="HBoxContainer" parent="Main/Timer/VBoxContainer"]
+margin_right = 460.0
+margin_bottom = 42.0
+mouse_filter = 2
+alignment = 1
+
+[node name="DataType" type="Label" parent="Main/Timer/VBoxContainer/DataTable"]
+margin_left = 3.0
+margin_right = 228.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 225, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Data Type"
+valign = 1
+
+[node name="DataValue" type="Label" parent="Main/Timer/VBoxContainer/DataTable"]
+margin_left = 232.0
+margin_right = 457.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 225, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Data Value"
+valign = 1
+
+[node name="DataTable2" type="HBoxContainer" parent="Main/Timer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 460.0
+margin_bottom = 88.0
+mouse_filter = 2
+alignment = 1
+
+[node name="DataType" type="Label" parent="Main/Timer/VBoxContainer/DataTable2"]
+margin_left = 3.0
+margin_right = 228.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 225, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "NULL"
+valign = 1
+
+[node name="DataValue" type="Label" parent="Main/Timer/VBoxContainer/DataTable2"]
+margin_left = 232.0
+margin_right = 457.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 225, 0 )
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "NULL"
+valign = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Main/Timer"]
+position = Vector2( 369, 395 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 6 )
+
+[node name="Start" type="TouchScreenButton" parent="Main/Timer"]
+position = Vector2( 8, 395 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 7 )
+
+[node name="Sockets" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="WireConnection" parent="Sockets" instance=ExtResource( 2 )]
+margin_left = -63.0
+margin_top = 5.0
+margin_right = -3.0
+margin_bottom = 65.0
+
+[node name="WireConnection2" parent="Sockets" instance=ExtResource( 2 )]
+margin_left = 486.0
+margin_top = 107.0
+margin_right = 546.0
+margin_bottom = 167.0
+method_limit = "_Pause"
+
+[connection signal="pressed" from="Selected/Close" to="." method="_on_Close_pressed"]
+[connection signal="gui_input" from="Selected/JoystickAnalogue" to="." method="_on_JoystickAnalogue_gui_input"]
+[connection signal="gui_input" from="Main" to="." method="_on_Main_gui_input"]
+[connection signal="pressed" from="Main/Timer/TouchScreenButton" to="Main/Timer" method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="Main/Timer/Start" to="Main/Timer" method="_on_Start_pressed"]
