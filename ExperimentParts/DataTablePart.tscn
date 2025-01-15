@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://MainTheme.tres" type="Theme" id=1]
+
+[node name="Data" type="HBoxContainer"]
+margin_top = 46.0
+margin_right = 460.0
+margin_bottom = 88.0
+mouse_filter = 2
+alignment = 1
+
+[node name="DataType" type="Label" parent="."]
+margin_left = 3.0
+margin_right = 228.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 225, 0 )
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "NULL"
+valign = 1
+
+[node name="DataValue" type="Label" parent="."]
+margin_left = 232.0
+margin_right = 457.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 225, 0 )
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "NULL"
+valign = 1

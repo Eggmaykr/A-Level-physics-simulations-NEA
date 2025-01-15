@@ -51,7 +51,7 @@ func _on_Pause_gui_input(event):
 		if event.pressed == true:
 			_Pause()
 
-func _Pause(_Black = false):
+func _Pause(_Blank = false):
 	if is_processing() == false:
 		get_parent().get_parent().get_node("Selected/Pause").pressed = true
 		set_process(true)
@@ -59,6 +59,7 @@ func _Pause(_Black = false):
 		get_parent().get_parent().get_node("Selected/Pause").pressed = false
 		set_process(false)
 
-func _Read_Variables(_Black):
-	return [["Wavelength", Wavelength],["Frequency", FrequencyHertz]]
+func _Read_Variables(_Blank):
+	return [["Wavelength", Wavelength],["Frequency", FrequencyHertz], ["Tention", TentionN], ["Time", TimeSeconds], ["Length", LengthOfWireMeters], ["Mass per Unit Length", MassPerUnitLengthKilograms]]
+
 

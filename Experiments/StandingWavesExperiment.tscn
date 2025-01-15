@@ -305,22 +305,6 @@ margin_right = 448.0
 margin_bottom = -1.0
 Is_Reciever = true
 
-[node name="WireConnection2" parent="Sockets" instance=ExtResource( 9 )]
-visible = false
-margin_left = 479.0
-margin_top = 55.0
-margin_right = 539.0
-margin_bottom = 115.0
-Is_Reciever = true
-
-[node name="WireConnection3" parent="Sockets" instance=ExtResource( 9 )]
-visible = false
-margin_left = 479.0
-margin_top = 121.0
-margin_right = 539.0
-margin_bottom = 181.0
-Is_Reciever = true
-
 [node name="WireConnection4" parent="Sockets" instance=ExtResource( 9 )]
 visible = false
 margin_left = 173.0
