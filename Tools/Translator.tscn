@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/BoardItemScript.gd" type="Script" id=1]
 [ext_resource path="res://MainGUI/WireConnection.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://move-selection.png" type="Texture" id=5]
 [ext_resource path="res://trash-bin.png" type="Texture" id=6]
 [ext_resource path="res://refresh.png" type="Texture" id=7]
-[ext_resource path="res://ExperimentParts/DataTablePart.tscn" type="PackedScene" id=8]
 [ext_resource path="res://cross.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -38,7 +37,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 0.5, 0.5 ),
 "update": 0,
-"values": [ Vector2( 13, 100 ), Vector2( 13, 248 ) ]
+"values": [ Vector2( 12, 561 ), Vector2( 12, 681 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -122,26 +121,26 @@ margin_right = 479.0
 margin_bottom = 700.0
 custom_styles/panel = SubResource( 1 )
 
-[node name="Translator" type="Control" parent="Main"]
+[node name="Experiment" type="Control" parent="Main"]
 margin_right = 479.0
 margin_bottom = 217.0
 mouse_filter = 2
 script = ExtResource( 4 )
 
-[node name="DataTable" type="VBoxContainer" parent="Main/Translator"]
+[node name="DataTable" type="VBoxContainer" parent="Main/Experiment"]
 margin_left = 12.0
 margin_top = 21.0
 margin_right = 472.0
 margin_bottom = 216.0
 mouse_filter = 2
 
-[node name="DataTableHeader" type="HBoxContainer" parent="Main/Translator/DataTable"]
+[node name="DataTableHeader" type="HBoxContainer" parent="Main/Experiment/DataTable"]
 margin_right = 460.0
 margin_bottom = 42.0
 mouse_filter = 2
 alignment = 1
 
-[node name="DataType" type="Label" parent="Main/Translator/DataTable/DataTableHeader"]
+[node name="DataType" type="Label" parent="Main/Experiment/DataTable/DataTableHeader"]
 margin_left = 3.0
 margin_right = 228.0
 margin_bottom = 42.0
@@ -151,7 +150,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Data Type"
 valign = 1
 
-[node name="DataValue" type="Label" parent="Main/Translator/DataTable/DataTableHeader"]
+[node name="DataValue" type="Label" parent="Main/Experiment/DataTable/DataTableHeader"]
 margin_left = 232.0
 margin_right = 457.0
 margin_bottom = 42.0
@@ -161,15 +160,13 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Data Value"
 valign = 1
 
-[node name="Data" parent="Main/Translator/DataTable" instance=ExtResource( 8 )]
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Main/Translator"]
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Main/Experiment"]
 position = Vector2( 369, 592 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 6 )
 pressed = ExtResource( 6 )
 
-[node name="Start" type="TouchScreenButton" parent="Main/Translator"]
+[node name="Update" type="TouchScreenButton" parent="Main/Experiment"]
 position = Vector2( 8, 592 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 7 )
@@ -194,18 +191,24 @@ margin_right = 91.0
 margin_bottom = 762.0
 Is_Reciever = true
 method_connected = "_Pause"
+method_limit = "_Pause"
 
 [node name="WireConnection2" parent="Sockets" instance=ExtResource( 2 )]
 margin_left = 479.0
-margin_top = 63.0
+margin_top = 67.0
 margin_right = 539.0
-margin_bottom = 123.0
+margin_bottom = 127.0
+method_limit = "_Read_Variables"
+
+[node name="WireConnection3" parent="Sockets" instance=ExtResource( 2 )]
+margin_left = 479.0
+margin_top = 131.0
+margin_right = 539.0
+margin_bottom = 191.0
 method_limit = "_Read_Variables"
 
 [connection signal="pressed" from="Selected/Close" to="." method="_on_Close_pressed"]
 [connection signal="gui_input" from="Selected/JoystickAnalogue" to="." method="_on_JoystickAnalogue_gui_input"]
 [connection signal="gui_input" from="Main" to="." method="_on_Main_gui_input"]
-[connection signal="pressed" from="Main/Translator/TouchScreenButton" to="Main/Translator" method="_on_TouchScreenButton_pressed"]
-[connection signal="pressed" from="Main/Translator/Start" to="Main/Translator" method="_on_Start_pressed"]
-
-[editable path="Main/Translator/DataTable/Data"]
+[connection signal="pressed" from="Main/Experiment/TouchScreenButton" to="Main/Experiment" method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="Main/Experiment/Update" to="Main/Experiment" method="_Update"]

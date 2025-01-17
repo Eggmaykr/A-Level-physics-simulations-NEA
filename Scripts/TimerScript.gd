@@ -4,7 +4,7 @@ var Repeating : bool = false
 
 
 func _process(delta):
-	get_node("VBoxContainer/TimeLeft").text = str(get_node("Timer").wait_time) + "/" + str(int(get_node("Timer").time_left))
+	get_node("VBoxContainer/TimeLeft").text = str(get_node("Timer").wait_time) + "/" + str(get_node("Timer").time_left)
 
 func _on_Timer_timeout():
 	get_parent().get_parent().get_node("Sockets").get_child(0)._activate_Sender(false)

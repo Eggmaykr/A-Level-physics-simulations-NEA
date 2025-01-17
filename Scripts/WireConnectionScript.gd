@@ -25,8 +25,12 @@ func _on_WireConnection_gui_input(event):
 func _Start_Connection():
 	var Sockets = get_tree().get_nodes_in_group("Socket")
 	for Socket in Sockets:
-		if Socket.Is_Reciever == true:
-			Socket.show()
+		if Socket.Is_Reciever == true :
+			if Socket.method_limit != "":
+				if Socket.method_limit == method_connected:
+					Socket.show()
+			else:
+				Socket.show()
 	get_parent().get_parent().get_parent().get_parent().get_node("HelloThere").start_connection(self)
 
 func _Connect_Wire(NodeCon, wire = null):
