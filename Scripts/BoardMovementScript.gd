@@ -6,12 +6,9 @@ var CurrentSelected = ""
 
 var SocketConnection = null
 
-# warning-ignore:unused_argument
-
 func _unhandled_input(event):
 	if event is InputEventScreenDrag:
 		position -= event.relative
-
 
 func _on_Experiments_gui_input(event):
 	if event is InputEventScreenTouch:
@@ -27,12 +24,9 @@ func _on_Experiments_gui_input(event):
 				get_node("CanvasLayer").get_node(CurrentSelected).get_node("Opener").play_backwards("OpenClose" + CurrentSelected)
 				CurrentSelected = ""
 
-
-
 func _on_Opener_animation_finished(anim_name):
 	if anim_name != "OpenClose"+CurrentSelected and CurrentSelected != "":
 		get_node("CanvasLayer").get_node(CurrentSelected).get_node("Opener").play("OpenClose"+CurrentSelected)
-
 
 func _on_Tools_gui_input(event):
 	if event is InputEventScreenTouch:
@@ -47,7 +41,6 @@ func _on_Tools_gui_input(event):
 			else:
 				get_node("CanvasLayer").get_node(CurrentSelected).get_node("Opener").play_backwards("OpenClose" + CurrentSelected)
 				CurrentSelected = ""
-
 
 func _on_TextureRect_gui_input(event):
 	if event is InputEventScreenDrag:

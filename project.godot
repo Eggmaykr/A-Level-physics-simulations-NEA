@@ -24,6 +24,10 @@ config/name="Nea"
 run/main_scene="res://MainGUI/MainGUI.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Database="*res://Scripts/GlobalDatabaseScript.gd"
+
 [display]
 
 window/size/width=1440

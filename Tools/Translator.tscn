@@ -183,7 +183,7 @@ margin_right = -3.0
 margin_bottom = 65.0
 method_limit = "_Read_Variables"
 
-[node name="Updator" parent="Sockets" instance=ExtResource( 2 )]
+[node name="Updater" parent="Sockets" instance=ExtResource( 2 )]
 visible = false
 margin_left = 31.0
 margin_top = 702.0
@@ -192,20 +192,6 @@ margin_bottom = 762.0
 Is_Reciever = true
 method_connected = "_Pause"
 method_limit = "_Pause"
-
-[node name="WireConnection2" parent="Sockets" instance=ExtResource( 2 )]
-margin_left = 479.0
-margin_top = 67.0
-margin_right = 539.0
-margin_bottom = 127.0
-method_limit = "_Read_Variables"
-
-[node name="WireConnection3" parent="Sockets" instance=ExtResource( 2 )]
-margin_left = 479.0
-margin_top = 131.0
-margin_right = 539.0
-margin_bottom = 191.0
-method_limit = "_Read_Variables"
 
 [connection signal="pressed" from="Selected/Close" to="." method="_on_Close_pressed"]
 [connection signal="gui_input" from="Selected/JoystickAnalogue" to="." method="_on_JoystickAnalogue_gui_input"]

@@ -267,9 +267,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_top = 2222.0
-margin_right = 1440.0
-margin_bottom = 2560.0
+margin_left = -720.0
+margin_top = -338.0
+margin_right = 720.0
 color = Color( 0.929412, 0.929412, 0.929412, 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HelloThere/CanvasLayer/Experiment"]
@@ -381,9 +381,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_top = 2222.0
-margin_right = 1440.0
-margin_bottom = 2560.0
+margin_left = -720.0
+margin_top = -338.0
+margin_right = 720.0
 color = Color( 0.929412, 0.929412, 0.929412, 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HelloThere/CanvasLayer/Tools"]
@@ -396,11 +396,11 @@ margin_bottom = 333.0
 margin_right = 604.0
 margin_bottom = 300.0
 
-[node name="Experiments" parent="HelloThere/CanvasLayer/Tools/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
+[node name="Tool" parent="HelloThere/CanvasLayer/Tools/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
 Scene_Path = "res://Tools/Timer.tscn"
 Show_Name = "Timer"
 
-[node name="Experiments6" parent="HelloThere/CanvasLayer/Tools/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
+[node name="Tool2" parent="HelloThere/CanvasLayer/Tools/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
 margin_left = 304.0
 margin_right = 604.0
 Scene_Path = "res://Tools/Translator.tscn"
@@ -410,7 +410,7 @@ Show_Name = "Translator"
 anims/OpenCloseTools = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 
-[node name="ColorRect" type="ColorRect" parent="HelloThere/CanvasLayer"]
+[node name="SelectionPanel" type="ColorRect" parent="HelloThere/CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -419,7 +419,7 @@ margin_left = -720.0
 margin_top = -338.0
 margin_right = 720.0
 
-[node name="MainExpandables" type="HBoxContainer" parent="HelloThere/CanvasLayer/ColorRect"]
+[node name="MainExpandables" type="HBoxContainer" parent="HelloThere/CanvasLayer/SelectionPanel"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -428,13 +428,13 @@ margin_top = -319.0
 margin_right = -25.0
 margin_bottom = -19.0
 
-[node name="Experiments" type="Panel" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables"]
+[node name="Experiments" type="Panel" parent="HelloThere/CanvasLayer/SelectionPanel/MainExpandables"]
 margin_right = 300.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables/Experiments"]
+[node name="Text" type="Label" parent="HelloThere/CanvasLayer/SelectionPanel/MainExpandables/Experiments"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -447,14 +447,14 @@ theme = ExtResource( 3 )
 text = "Experiments"
 align = 1
 
-[node name="Graphs" type="Panel" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables"]
+[node name="Graphs" type="Panel" parent="HelloThere/CanvasLayer/SelectionPanel/MainExpandables"]
 margin_left = 304.0
 margin_right = 604.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables/Graphs"]
+[node name="Text" type="Label" parent="HelloThere/CanvasLayer/SelectionPanel/MainExpandables/Graphs"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -467,14 +467,14 @@ theme = ExtResource( 3 )
 text = "Graphs"
 align = 1
 
-[node name="Tools" type="Panel" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables"]
+[node name="Tools" type="Panel" parent="HelloThere/CanvasLayer/SelectionPanel/MainExpandables"]
 margin_left = 608.0
 margin_right = 908.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables/Tools"]
+[node name="Text" type="Label" parent="HelloThere/CanvasLayer/SelectionPanel/MainExpandables/Tools"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -487,14 +487,14 @@ theme = ExtResource( 3 )
 text = "Tools"
 align = 1
 
-[node name="Settings" type="Panel" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables"]
+[node name="Settings" type="Panel" parent="HelloThere/CanvasLayer/SelectionPanel/MainExpandables"]
 margin_left = 912.0
 margin_right = 1212.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 theme = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="HelloThere/CanvasLayer/ColorRect/MainExpandables/Settings"]
+[node name="Text" type="Label" parent="HelloThere/CanvasLayer/SelectionPanel/MainExpandables/Settings"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -507,14 +507,14 @@ theme = ExtResource( 3 )
 text = "Settings"
 align = 1
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="HelloThere/CanvasLayer"]
+[node name="MiscMenu" type="TouchScreenButton" parent="HelloThere/CanvasLayer"]
 position = Vector2( 1258, 2240 )
 scale = Vector2( 0.3, 0.3 )
 normal = ExtResource( 4 )
 pressed = ExtResource( 4 )
 shape = SubResource( 1 )
 
-[node name="TextureRect" type="TextureRect" parent="HelloThere/CanvasLayer"]
+[node name="Spyglass" type="TextureRect" parent="HelloThere/CanvasLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -760.0
@@ -529,6 +529,6 @@ texture = ExtResource( 5 )
 
 [connection signal="animation_finished" from="HelloThere/CanvasLayer/Experiment/Opener" to="HelloThere" method="_on_Opener_animation_finished"]
 [connection signal="animation_finished" from="HelloThere/CanvasLayer/Tools/Opener" to="HelloThere" method="_on_Opener_animation_finished"]
-[connection signal="gui_input" from="HelloThere/CanvasLayer/ColorRect/MainExpandables/Experiments" to="HelloThere" method="_on_Experiments_gui_input"]
-[connection signal="gui_input" from="HelloThere/CanvasLayer/ColorRect/MainExpandables/Tools" to="HelloThere" method="_on_Tools_gui_input"]
-[connection signal="gui_input" from="HelloThere/CanvasLayer/TextureRect" to="HelloThere" method="_on_TextureRect_gui_input"]
+[connection signal="gui_input" from="HelloThere/CanvasLayer/SelectionPanel/MainExpandables/Experiments" to="HelloThere" method="_on_Experiments_gui_input"]
+[connection signal="gui_input" from="HelloThere/CanvasLayer/SelectionPanel/MainExpandables/Tools" to="HelloThere" method="_on_Tools_gui_input"]
+[connection signal="gui_input" from="HelloThere/CanvasLayer/Spyglass" to="HelloThere" method="_on_TextureRect_gui_input"]
