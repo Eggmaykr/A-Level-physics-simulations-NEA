@@ -3,13 +3,12 @@ extends Control
 var DataTablePartPath = "res://ExperimentParts/DataTablePart.tscn"
 var Data : Array = []
 
-
-func _Pause(_Blank):
-	_Update(_Blank)
+func _ready():
+	get_parent().get_parent().Open = true
 
 func _Update(_Blank = false):
 	if get_parent().get_parent().get_node("Sockets/MainConnector").WireConnected != null:
-		Data = get_parent().get_parent().get_node("Sockets/MainConnector")._activate_Sender(false)
+		Data = get_parent().get_parent().get_node("Sockets/MainConnector")._activate_Sender()
 		var DataSize = Data.size()
 		if DataSize < get_node("DataTable").get_child_count()-1:
 			for Datanum in range(get_node("DataTable").get_child_count()-1-DataSize):
@@ -26,6 +25,8 @@ func _Update(_Blank = false):
 		for Data_Piece in range(DataSize):
 			get_node("DataTable").get_child(Data_Piece+1).get_node("DataType").text = Data[Data_Piece][0]
 			get_node("DataTable").get_child(Data_Piece+1).get_node("DataValue").text = str(Data[Data_Piece][1])
+			get_parent().get_parent().get_node("Sockets").get_child(Data_Piece + 2).method_type = "Numeric"
+			get_parent().get_parent().get_node("Sockets").get_child(Data_Piece + 2).Permanent_Parameter = Data[Data_Piece][1]
+			get_parent().get_parent().get_node("Sockets").get_child(Data_Piece + 2)._activate_Sender()
+			
 
-func _on_TouchScreenButton_pressed():
-	self.queue_free()

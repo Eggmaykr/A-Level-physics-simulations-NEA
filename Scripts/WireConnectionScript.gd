@@ -2,7 +2,7 @@ extends Panel
 
 export var Is_Reciever : bool = false 
 export var method_connected = ""
-export var method_limit = ""
+export var method_type = ""
 var Permanent_Parameter = null
 
 var WireConnected = null
@@ -12,11 +12,12 @@ var ConnectionStarted = false
 func _activate_Reciever(Parameter):
 	return get_parent().get_parent().get_node("Main/Experiment").call(method_connected, Parameter)
 
-func _activate_Sender(Parameter):
-	if Permanent_Parameter:
-		return SocketConnected._activate_Reciever(Permanent_Parameter)
-	else:
-		return SocketConnected._activate_Reciever(Parameter)
+func _activate_Sender(Parameter = false):
+	if SocketConnected != null:
+		if Permanent_Parameter != null:
+			return SocketConnected._activate_Reciever(Permanent_Parameter)
+		else:
+			return SocketConnected._activate_Reciever(Parameter)
 
 func _on_WireConnection_gui_input(event):
 	if event is InputEventScreenTouch:
@@ -30,8 +31,8 @@ func _Start_Connection():
 	var Sockets = get_tree().get_nodes_in_group("Socket")
 	for Socket in Sockets:
 		if Socket.Is_Reciever == true :
-			if Socket.method_limit != "":
-				if Socket.method_limit == method_connected:
+			if Socket.method_type != "":
+				if Socket.method_type == method_type:
 					Socket.show()
 			else:
 				Socket.show()

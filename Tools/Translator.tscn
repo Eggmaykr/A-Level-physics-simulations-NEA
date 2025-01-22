@@ -86,22 +86,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 123.0
+margin_left = -224.0
 margin_top = -44.5
-margin_right = 635.0
+margin_right = 288.0
 margin_bottom = 467.5
 rect_scale = Vector2( 0.2, 0.2 )
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 9 )
+
+[node name="Delete" type="TouchScreenButton" parent="Selected"]
+position = Vector2( 346, 21 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 6 )
 
 [node name="JoystickAnalogue" type="Panel" parent="Selected"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -267.0
+margin_left = -106.0
 margin_top = -93.5
-margin_right = 733.0
+margin_right = 894.0
 margin_bottom = 906.5
 rect_min_size = Vector2( 1000, 1000 )
 rect_scale = Vector2( 0.2, 0.2 )
@@ -160,12 +166,6 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Data Value"
 valign = 1
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Main/Experiment"]
-position = Vector2( 369, 592 )
-scale = Vector2( 0.2, 0.2 )
-normal = ExtResource( 6 )
-pressed = ExtResource( 6 )
-
 [node name="Update" type="TouchScreenButton" parent="Main/Experiment"]
 position = Vector2( 8, 592 )
 scale = Vector2( 0.2, 0.2 )
@@ -177,24 +177,24 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="MainConnector" parent="Sockets" instance=ExtResource( 2 )]
-margin_left = -63.0
-margin_top = 5.0
-margin_right = -3.0
-margin_bottom = 65.0
-method_limit = "_Read_Variables"
+margin_left = 15.0
+margin_top = -61.0
+margin_right = 75.0
+margin_bottom = -1.0
+method_connected = ""
+method_type = "Data"
 
 [node name="Updater" parent="Sockets" instance=ExtResource( 2 )]
-visible = false
-margin_left = 31.0
-margin_top = 702.0
-margin_right = 91.0
-margin_bottom = 762.0
+margin_left = -63.0
+margin_top = 615.0
+margin_right = -3.0
+margin_bottom = 675.0
 Is_Reciever = true
-method_connected = "_Pause"
-method_limit = "_Pause"
+method_connected = "_Update"
+method_type = "PAUSE"
 
 [connection signal="pressed" from="Selected/Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="Selected/Delete" to="." method="_on_Delete_pressed"]
 [connection signal="gui_input" from="Selected/JoystickAnalogue" to="." method="_on_JoystickAnalogue_gui_input"]
 [connection signal="gui_input" from="Main" to="." method="_on_Main_gui_input"]
-[connection signal="pressed" from="Main/Experiment/TouchScreenButton" to="Main/Experiment" method="_on_TouchScreenButton_pressed"]
 [connection signal="pressed" from="Main/Experiment/Update" to="Main/Experiment" method="_Update"]

@@ -86,23 +86,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 123.0
-margin_top = -44.5
-margin_right = 635.0
-margin_bottom = 467.5
+margin_left = -224.0
+margin_top = -43.5
+margin_right = 288.0
+margin_bottom = 468.5
 rect_scale = Vector2( 0.2, 0.2 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 4 )
+
+[node name="Delete" type="TouchScreenButton" parent="Selected"]
+position = Vector2( 343, 22 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 2 )
 
 [node name="JoystickAnalogue" type="Panel" parent="Selected"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -267.0
-margin_top = -93.5
-margin_right = 733.0
-margin_bottom = 906.5
+margin_left = -94.0
+margin_top = -92.5
+margin_right = 906.0
+margin_bottom = 907.5
 rect_min_size = Vector2( 1000, 1000 )
 rect_scale = Vector2( 0.2, 0.2 )
 custom_styles/panel = SubResource( 3 )
@@ -140,17 +146,17 @@ margin_bottom = 60.0
 mouse_filter = 2
 alignment = 1
 
-[node name="DataType" type="Label" parent="Main/Experiment/DataTable/DataTableHeader"]
+[node name="Header" type="Label" parent="Main/Experiment/DataTable/DataTableHeader"]
 margin_left = 3.0
 margin_right = 228.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 225, 60 )
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Out Put Value"
+text = "Out Put Value:"
 valign = 1
 
-[node name="DataValue" type="Label" parent="Main/Experiment/DataTable/DataTableHeader"]
+[node name="Value" type="Label" parent="Main/Experiment/DataTable/DataTableHeader"]
 margin_left = 232.0
 margin_top = 9.0
 margin_right = 457.0
@@ -175,7 +181,7 @@ margin_bottom = 60.0
 rect_min_size = Vector2( 225, 60 )
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Input"
+text = "Input:"
 valign = 1
 
 [node name="DataValue" type="Label" parent="Main/Experiment/DataTable/DataTableHeader2"]
@@ -203,7 +209,7 @@ margin_bottom = 60.0
 rect_min_size = Vector2( 225, 60 )
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Overwrite"
+text = "Overwrite:"
 valign = 1
 
 [node name="DataValue" type="Label" parent="Main/Experiment/DataTable/DataTableHeader3"]
@@ -217,34 +223,15 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Value"
 valign = 1
 
-[node name="Value" type="HBoxContainer" parent="Main/Experiment/DataTable"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Experiment/DataTable"]
 margin_top = 192.0
 margin_right = 460.0
 margin_bottom = 252.0
-
-[node name="Name" type="Label" parent="Main/Experiment/DataTable/Value"]
-margin_top = 9.0
-margin_right = 228.0
-margin_bottom = 51.0
-theme = ExtResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Parameter : 0.0"
-align = 1
-valign = 1
-
-[node name="HSlider" type="HSlider" parent="Main/Experiment/DataTable/Value"]
-margin_left = 232.0
-margin_right = 437.004
-margin_bottom = 60.0
-rect_min_size = Vector2( 205.004, 60 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Main/Experiment/DataTable"]
-margin_top = 256.0
-margin_right = 460.0
-margin_bottom = 316.0
+alignment = 1
 
 [node name="ADD" type="Panel" parent="Main/Experiment/DataTable/HBoxContainer"]
-margin_right = 100.0
+margin_left = 24.0
+margin_right = 124.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 100, 60 )
 
@@ -257,28 +244,28 @@ text = "ADD"
 align = 1
 valign = 1
 
-[node name="MINUS" type="Panel" parent="Main/Experiment/DataTable/HBoxContainer"]
-margin_left = 104.0
-margin_right = 204.0
+[node name="SUBTRACT" type="Panel" parent="Main/Experiment/DataTable/HBoxContainer"]
+margin_left = 128.0
+margin_right = 228.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 100, 60 )
 
-[node name="Name" type="Label" parent="Main/Experiment/DataTable/HBoxContainer/MINUS"]
+[node name="Name" type="Label" parent="Main/Experiment/DataTable/HBoxContainer/SUBTRACT"]
 margin_right = 100.0
 margin_bottom = 60.0
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "NEG"
+text = "SUB"
 align = 1
 valign = 1
 
-[node name="MINUS2" type="Panel" parent="Main/Experiment/DataTable/HBoxContainer"]
-margin_left = 208.0
-margin_right = 308.0
+[node name="MULTIPLY" type="Panel" parent="Main/Experiment/DataTable/HBoxContainer"]
+margin_left = 232.0
+margin_right = 332.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 100, 60 )
 
-[node name="Name" type="Label" parent="Main/Experiment/DataTable/HBoxContainer/MINUS2"]
+[node name="Name" type="Label" parent="Main/Experiment/DataTable/HBoxContainer/MULTIPLY"]
 margin_right = 100.0
 margin_bottom = 60.0
 theme = ExtResource( 6 )
@@ -287,13 +274,13 @@ text = "MULT"
 align = 1
 valign = 1
 
-[node name="MINUS3" type="Panel" parent="Main/Experiment/DataTable/HBoxContainer"]
-margin_left = 312.0
-margin_right = 412.0
+[node name="DIVIDE" type="Panel" parent="Main/Experiment/DataTable/HBoxContainer"]
+margin_left = 336.0
+margin_right = 436.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 100, 60 )
 
-[node name="Name" type="Label" parent="Main/Experiment/DataTable/HBoxContainer/MINUS3"]
+[node name="Name" type="Label" parent="Main/Experiment/DataTable/HBoxContainer/DIVIDE"]
 margin_right = 100.0
 margin_bottom = 60.0
 theme = ExtResource( 6 )
@@ -302,11 +289,16 @@ text = "DIV"
 align = 1
 valign = 1
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Main/Experiment"]
-position = Vector2( 369, 339 )
-scale = Vector2( 0.2, 0.2 )
-normal = ExtResource( 2 )
-pressed = ExtResource( 2 )
+[node name="ModeDisplay" type="Label" parent="Main/Experiment/DataTable"]
+margin_top = 256.0
+margin_right = 460.0
+margin_bottom = 316.0
+rect_min_size = Vector2( 225, 60 )
+theme = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Mode"
+align = 1
+valign = 1
 
 [node name="Update" type="TouchScreenButton" parent="Main/Experiment"]
 position = Vector2( 8, 339 )
@@ -325,36 +317,41 @@ margin_right = -3.0
 margin_bottom = 149.0
 Is_Reciever = true
 method_connected = "_Change_Input"
-method_limit = "_Read_Variables"
+method_type = "Numeric"
 
-[node name="MainConnector3" parent="Sockets" instance=ExtResource( 1 )]
+[node name="Overwrite" parent="Sockets" instance=ExtResource( 1 )]
 margin_left = -63.0
 margin_top = 151.0
 margin_right = -3.0
 margin_bottom = 211.0
 Is_Reciever = true
-method_limit = "_Read_Variables"
+method_connected = "_Overwrite_Parameter"
+method_type = "Numeric"
 
 [node name="MainConnector2" parent="Sockets" instance=ExtResource( 1 )]
 margin_left = 479.0
 margin_top = 21.0
 margin_right = 539.0
 margin_bottom = 81.0
-method_limit = "_Read_Variables"
+method_connected = ""
+method_type = "Numeric"
 
 [node name="Updater" parent="Sockets" instance=ExtResource( 1 )]
 visible = false
-margin_left = 31.0
-margin_top = 702.0
-margin_right = 91.0
-margin_bottom = 762.0
+margin_left = -63.0
+margin_top = 357.0
+margin_right = -3.0
+margin_bottom = 417.0
 Is_Reciever = true
-method_connected = "_Pause"
-method_limit = "_Pause"
+method_connected = "_Update"
+method_type = "PAUSE"
 
 [connection signal="pressed" from="Selected/Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="Selected/Delete" to="." method="_on_Delete_pressed"]
 [connection signal="gui_input" from="Selected/JoystickAnalogue" to="." method="_on_JoystickAnalogue_gui_input"]
 [connection signal="gui_input" from="Main" to="." method="_on_Main_gui_input"]
-[connection signal="value_changed" from="Main/Experiment/DataTable/Value/HSlider" to="Main/Experiment" method="_on_HSlider_value_changed"]
-[connection signal="pressed" from="Main/Experiment/TouchScreenButton" to="Main/Experiment" method="_on_TouchScreenButton_pressed"]
+[connection signal="gui_input" from="Main/Experiment/DataTable/HBoxContainer/ADD" to="Main/Experiment" method="_on_ADD_gui_input"]
+[connection signal="gui_input" from="Main/Experiment/DataTable/HBoxContainer/SUBTRACT" to="Main/Experiment" method="_on_SUBTRACT_gui_input"]
+[connection signal="gui_input" from="Main/Experiment/DataTable/HBoxContainer/MULTIPLY" to="Main/Experiment" method="_on_MULTIPLY_gui_input"]
+[connection signal="gui_input" from="Main/Experiment/DataTable/HBoxContainer/DIVIDE" to="Main/Experiment" method="_on_DIVIDE_gui_input"]
 [connection signal="pressed" from="Main/Experiment/Update" to="Main/Experiment" method="_Update"]

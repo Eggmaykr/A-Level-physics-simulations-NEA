@@ -3,6 +3,9 @@ extends Control
 var Repeating : bool = false
 
 
+func _ready():
+	get_parent().get_parent().Open = true
+
 func _process(delta):
 	get_node("VBoxContainer/TimeLeft").text = str(get_node("Timer").wait_time) + "/" + str(get_node("Timer").time_left).substr(0,3)
 
@@ -13,9 +16,6 @@ func _on_Timer_timeout():
 	else:
 		get_node("Timer").stop()
 
-
-func _on_TouchScreenButton_pressed():
-	self.queue_free()
 
 
 func _on_Start_pressed():

@@ -61,5 +61,3 @@ func _on_JoystickAnalogue_gui_input(event):
 		if event.pressed == true:
 			Moving = true
 
-
-
