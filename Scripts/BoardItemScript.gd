@@ -31,14 +31,17 @@ func _unhandled_input(event):
 		if event is InputEventScreenTouch:
 			if event.pressed == false:
 				if Open == true:
-					Open = false
-					get_node("Expandable/Opener").play_backwards("Open_Close")
+					if get_child_count() > 3:
+						Open = false
+						get_node("Expandable/Opener").play_backwards("Open_Close")
 				Selected = false
 				self.z_index = 0
 				get_node("Selected/Opener").play_backwards("OpenClose")
 
 func _on_Delete_pressed():
-	if Open == true:
+	if Open == true and get_child_count() > 3:
+		self.queue_free()
+	elif Selected == true and get_child_count() == 3:
 		self.queue_free()
 
 func _on_Main_gui_input(event):
@@ -50,8 +53,9 @@ func _on_Main_gui_input(event):
 
 func _on_Close_pressed():
 	if Open == true:
-		Open = false
-		get_node("Expandable/Opener").play_backwards("Open_Close")
+		if get_child_count() > 3:
+			Open = false
+			get_node("Expandable/Opener").play_backwards("Open_Close")
 	Selected = false
 	self.z_index = 0
 	get_node("Selected/Opener").play_backwards("OpenClose")

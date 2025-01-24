@@ -1,17 +1,17 @@
 extends Control
 
-var LengthOfWireMeters = 0.35
-var Wavelength : float = 0
+var LengthOfWireMeters : float = 0.35
+var Wavelength : float = 0.0
 var FrequencyHertz : float = 0.5
-var FundamentalFrequency = 0
-var MassPerUnitLengthKilograms = 10
+var FundamentalFrequency : float = 0.0
+var MassPerUnitLengthKilograms : float = 10
 var WaveSpeedMS : float = 10
-var WhichHarmonic = 0
-var MassOfWeightKilograms = 10
-var TentionN = 0
+var WhichHarmonic : float = 0
+var MassOfWeightKilograms : float= 10
+var TentionN : float = 0
 var Gravity : float = -9.81
-var TimeSeconds = 0
-const Amplitude = 10
+var TimeSeconds : float = 0
+const Amplitude : float = 10.0
 
 var subdivisions : float = 50
 var maxSize : float = 1300
@@ -24,7 +24,7 @@ func _process(delta):
 	TimeSeconds += delta
 	for pointNumber in range(subdivisions):
 		var tempCurrentX = get_node("StandingWave").points[pointNumber].x
-		get_node("StandingWave").points[pointNumber].y = 2*Amplitude*cos(((2*PI)/Wavelength)*tempCurrentX/10)*cos(2*PI*FrequencyHertz*TimeSeconds)
+		get_node("StandingWave").points[pointNumber].y = 2*Amplitude*cos(((2*PI)/Wavelength)*tempCurrentX/10)*cos(2*PI*FrequencyHertz*TimeSeconds) + 2*Amplitude*cos(((2*PI)/Wavelength)*tempCurrentX/10)*-cos(2*PI*FrequencyHertz*TimeSeconds)
 
 func createWire(subdivs):
 	subdivisions = subdivs

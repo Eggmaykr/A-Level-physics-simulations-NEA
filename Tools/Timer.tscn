@@ -193,6 +193,10 @@ scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 7 )
 pressed = ExtResource( 9 )
 
+[node name="Control" type="Control" parent="Main/Experiment/Start"]
+margin_right = 510.0
+margin_bottom = 510.0
+
 [node name="Sockets" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
