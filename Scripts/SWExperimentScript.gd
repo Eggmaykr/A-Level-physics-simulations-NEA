@@ -22,9 +22,14 @@ func _ready():
 	
 func _process(delta):
 	TimeSeconds += delta
-	for pointNumber in range(subdivisions):
-		var tempCurrentX = get_node("StandingWave").points[pointNumber].x
-		get_node("StandingWave").points[pointNumber].y = 2*Amplitude*cos(((2*PI)/Wavelength)*tempCurrentX/10)*cos(2*PI*FrequencyHertz*TimeSeconds) + 2*Amplitude*cos(((2*PI)/Wavelength)*tempCurrentX/10)*-cos(2*PI*FrequencyHertz*TimeSeconds)
+	var PointsSummed = []
+	for pointNumber in range(subdivisions * 2):
+		var tempCurrentX = (maxSize/subdivisions) * pointNumber * LengthOfWireMeters
+		PointsSummed.append(2*Amplitude*cos(((2*PI)/Wavelength)*tempCurrentX/10)*cos(2*PI*FrequencyHertz*TimeSeconds))
+	var NumberOfCalculatedPoints = PointsSummed.size()
+	for pointRelative in range(subdivisions):
+		get_node("StandingWave").points[pointRelative].y = PointsSummed[pointRelative] + PointsSummed[-1*(pointRelative+1)]
+		
 
 func createWire(subdivs):
 	subdivisions = subdivs

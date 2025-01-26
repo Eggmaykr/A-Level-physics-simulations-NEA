@@ -1,16 +1,22 @@
 extends Node
 
+var DataBasePath : String = ""
+var SQLite := preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var database = SQLite.new()
+	database.path = "res://BigData.db"
+	database.open_db()
+	pass
 
+func write_to_database():
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func remove_from_database():
+	pass
+
+func update_database():
+	pass
+
+func get_from_database():
+	pass
