@@ -27,7 +27,6 @@ func _on_Start_pressed():
 
 func _on_CheckButton_gui_input(event):
 	if event is InputEventScreenTouch:
-		print("Touched")
 		if event.pressed == true:
 			if Repeating == false:
 				Repeating = true

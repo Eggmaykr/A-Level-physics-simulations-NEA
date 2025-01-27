@@ -202,7 +202,6 @@ margin_left = -62.0
 margin_top = 196.0
 margin_right = -2.0
 margin_bottom = 256.0
-method_limit = "_Pause"
 
 [connection signal="pressed" from="Selected/Close" to="." method="_on_Close_pressed"]
 [connection signal="gui_input" from="Selected/JoystickAnalogue" to="." method="_on_JoystickAnalogue_gui_input"]
