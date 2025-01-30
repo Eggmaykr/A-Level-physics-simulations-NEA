@@ -29,6 +29,7 @@ func _on_CreateNewConfirm_gui_input(event):
 				var converted_time_created = str(time_created["year"]) + "/" + str(time_created["month"]) + "/" + str(time_created["day"]) + "-" + str(time_created["hour"]) + ":" +str(time_created["minute"])
 				var data = {"BoardName" : WhiteBoardName, "NumberOfBoardElements" : int(0), "DateCreated" : converted_time_created}
 				Database.write_to_database("Whiteboards", data)
+				Database.CurrentWhiteBoardID = Database.get_size_of_table("Whiteboards", "UnqBoardID")
 				get_tree().change_scene("res://MainGUI/Board.tscn")
 
 
