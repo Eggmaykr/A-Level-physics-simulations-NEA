@@ -72,6 +72,7 @@ text = "Physics"
 align = 1
 
 [node name="MainButtonContainer" type="VBoxContainer" parent="."]
+visible = false
 margin_left = 108.0
 margin_top = 369.0
 margin_right = 1337.0
@@ -176,6 +177,7 @@ margin_bottom = 1190.18
 rect_min_size = Vector2( 0, 6.181 )
 
 [node name="CreateNew" type="Control" parent="."]
+visible = false
 margin_right = 1440.0
 margin_bottom = 2560.0
 rect_pivot_offset = Vector2( 156, 840 )
@@ -235,9 +237,97 @@ scale = Vector2( 0.4, 0.4 )
 normal = ExtResource( 3 )
 pressed = ExtResource( 3 )
 
+[node name="LoadWhiteboard" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="NewWhiteboard" type="Panel" parent="LoadWhiteboard"]
+margin_left = 57.0
+margin_top = 283.0
+margin_right = 1397.0
+margin_bottom = 2471.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 372, 384 )
+size_flags_horizontal = 7
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+custom_styles/panel = SubResource( 11 )
+
+[node name="LoadScroll" type="ScrollContainer" parent="LoadWhiteboard/NewWhiteboard"]
+margin_left = 61.0
+margin_top = 54.0
+margin_right = 1277.0
+margin_bottom = 2128.0
+
+[node name="LoadGrid" type="GridContainer" parent="LoadWhiteboard/NewWhiteboard/LoadScroll"]
+margin_right = 400.0
+margin_bottom = 400.0
+columns = 8
+
+[node name="LoadItem" type="Panel" parent="LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid"]
+margin_right = 400.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 400, 400 )
+
+[node name="NameLabel" type="Label" parent="LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid/LoadItem"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 196.0
+margin_bottom = -102.0
+custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Name"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="DateLabel" type="Label" parent="LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid/LoadItem"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -67.0
+margin_right = 196.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Date"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="ElementNum" type="Label" parent="LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid/LoadItem"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = 66.0
+margin_right = 196.0
+margin_bottom = 164.0
+custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Element Num"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="CancelLoad" type="TouchScreenButton" parent="LoadWhiteboard"]
+position = Vector2( 1238, 240 )
+scale = Vector2( 0.4, 0.4 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 3 )
+
 [connection signal="gui_input" from="MainButtonContainer/NewWhiteboard" to="." method="_on_NewWhiteboard_gui_input"]
 [connection signal="gui_input" from="MainButtonContainer/LastWhiteboard" to="." method="_on_LastWhiteboard_gui_input"]
 [connection signal="gui_input" from="MainButtonContainer/LoadWhiteboard" to="." method="_on_LoadWhiteboard_gui_input"]
 [connection signal="text_changed" from="CreateNew/NewWhiteboard/LineEdit" to="." method="_on_LineEdit_text_changed"]
 [connection signal="gui_input" from="CreateNew/CreateNewConfirm" to="." method="_on_CreateNewConfirm_gui_input"]
 [connection signal="pressed" from="CreateNew/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="LoadWhiteboard/CancelLoad" to="." method="_on_CancelLoad_pressed"]

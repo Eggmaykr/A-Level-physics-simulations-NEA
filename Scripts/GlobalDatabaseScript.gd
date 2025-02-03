@@ -43,7 +43,7 @@ func remove_from_database(table_name : String, primaryKeyName : String, primaryK
 func update_database(table_name : String, primaryKeyName : String, primaryKey : int, updatedData : Dictionary):
 	print(database.update_rows(table_name, primaryKeyName + " = " + str(primaryKey), updatedData), "Result")
 
-func select_from_database(query_string : String):
+func run_custom_query(query_string : String):
 	database.query(query_string)
 	return database.query_result
 

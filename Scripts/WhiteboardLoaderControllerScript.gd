@@ -14,12 +14,16 @@ func _on_LastWhiteboard_gui_input(event):
 
 
 func _on_LoadWhiteboard_gui_input(event):
-	pass # Replace with function body.
+	if event is InputEventScreenTouch:
+		if event.pressed == true:
+			get_node("LoadWhiteboard").show()
 
 
 func _on_Cancel_pressed():
 	get_node("CreateNew").hide()
 
+func _on_CancelLoad_pressed():
+	get_node("LoadWhiteboard").hide()
 
 func _on_CreateNewConfirm_gui_input(event):
 	if event is InputEventScreenTouch:
@@ -36,3 +40,6 @@ func _on_CreateNewConfirm_gui_input(event):
 
 func _on_LineEdit_text_changed(new_text):
 	WhiteBoardName = new_text
+
+
+
