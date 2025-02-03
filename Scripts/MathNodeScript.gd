@@ -1,8 +1,8 @@
 extends Control
 
-var _Input : float = 0.0
-var _OverWrite : float = 0.0
-var _Result : float = 0.0
+var _Input : Array = ["Nothing", 0.0]
+var _OverWrite : Array = ["Nothing", 0.0]
+var _Result : Array = ["Nothing", 0.0]
 
 enum ModeNames {ADD, SUB, MULT, DIV = 0}
 var Mode : int = ModeNames.ADD
@@ -12,13 +12,14 @@ func _ready():
 
 func _Update(_Parameter = false):
 	if Mode == ModeNames.ADD:
-		_Result = _Input + _OverWrite
+		_Result[1] = _Input[1] + _OverWrite[1]
 	elif Mode == ModeNames.SUB:
-		_Result = _Input - _OverWrite
+		_Result[1] = _Input[1] - _OverWrite[1]
 	elif Mode == ModeNames.MULT:
-		_Result == _Input * _OverWrite
+		_Result[1] = _Input[1] * _OverWrite[1]
 	else:
-		_Result == _Input / _OverWrite
+		_Result[1] = _Input[1] / _OverWrite[1]
+	_Result[0] = _Input[0]
 	get_node("DataTable/DataTableHeader/Value").text = str(_Result)
 
 func _Overwrite_Parameter(Changed_Param):

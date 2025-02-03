@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/BoardItemScript.gd" type="Script" id=1]
 [ext_resource path="res://MainGUI/WireConnection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tools/Experiment.gd" type="Script" id=3]
+[ext_resource path="res://MainTheme.tres" type="Theme" id=4]
 [ext_resource path="res://move-selection.png" type="Texture" id=5]
 [ext_resource path="res://trash-bin.png" type="Texture" id=6]
 [ext_resource path="res://pause.png" type="Texture" id=7]
@@ -67,6 +68,18 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.47451, 0.768627, 0.8, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="ExperimentHolder" type="Node2D"]
 z_as_relative = false
 script = ExtResource( 1 )
@@ -123,8 +136,9 @@ anims/OpenClose = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 
 [node name="Main" type="Panel" parent="."]
+margin_top = 1.0
 margin_right = 479.0
-margin_bottom = 265.0
+margin_bottom = 266.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="Experiment" type="Control" parent="Main"]
@@ -134,7 +148,7 @@ mouse_filter = 2
 script = ExtResource( 3 )
 
 [node name="Update" type="TouchScreenButton" parent="Main/Experiment"]
-position = Vector2( 371, 158 )
+position = Vector2( 7.00003, 161 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 8 )
 pressed = ExtResource( 7 )
@@ -142,6 +156,44 @@ pressed = ExtResource( 7 )
 [node name="Control" type="Control" parent="Main/Experiment/Update"]
 margin_right = 510.0
 margin_bottom = 510.0
+
+[node name="ColorPicker" type="ColorPicker" parent="Main/Experiment"]
+margin_left = 481.0
+margin_top = 1.0
+margin_right = 782.0
+margin_bottom = 437.0
+presets_enabled = false
+presets_visible = false
+
+[node name="ColorID" type="Panel" parent="Main/Experiment"]
+margin_left = 393.0
+margin_top = 10.0
+margin_right = 468.0
+margin_bottom = 85.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="DataView" type="VBoxContainer" parent="Main/Experiment"]
+margin_left = 21.0
+margin_top = 31.0
+margin_right = 390.0
+margin_bottom = 119.0
+
+[node name="ValueName" type="Label" parent="Main/Experiment/DataView"]
+margin_right = 369.0
+margin_bottom = 42.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Value Type:"
+valign = 1
+
+[node name="ValueValue" type="Label" parent="Main/Experiment/DataView"]
+margin_top = 46.0
+margin_right = 369.0
+margin_bottom = 88.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Value Value:"
+valign = 1
 
 [node name="Sockets" type="Control" parent="."]
 margin_right = 40.0
@@ -152,7 +204,17 @@ margin_left = -60.0
 margin_top = 69.0
 margin_right = 0.0
 margin_bottom = 129.0
-method_connected = ""
+Is_Reciever = true
+method_connected = "ChangeValue"
+method_type = "Numeric"
+
+[node name="UpdateReciever" parent="Sockets" instance=ExtResource( 2 )]
+margin_left = -59.0
+margin_top = 180.0
+margin_right = 1.0
+margin_bottom = 240.0
+Is_Reciever = true
+method_connected = "_Update"
 method_type = "PAUSE"
 
 [connection signal="pressed" from="Selected/Close" to="." method="_on_Close_pressed"]
@@ -161,3 +223,4 @@ method_type = "PAUSE"
 [connection signal="gui_input" from="Selected/JoystickAnalogue" to="." method="_on_JoystickAnalogue_gui_input"]
 [connection signal="gui_input" from="Main" to="." method="_on_Main_gui_input"]
 [connection signal="pressed" from="Main/Experiment/Update" to="Main/Experiment" method="_on_Update_pressed"]
+[connection signal="color_changed" from="Main/Experiment/ColorPicker" to="Main/Experiment" method="_on_ColorPicker_color_changed"]

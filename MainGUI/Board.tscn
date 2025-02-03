@@ -393,7 +393,7 @@ margin_right = 1423.0
 margin_bottom = 333.0
 
 [node name="Expandable1" type="HBoxContainer" parent="HelloThere/CanvasLayer/Tools/ScrollContainer"]
-margin_right = 908.0
+margin_right = 1212.0
 margin_bottom = 300.0
 
 [node name="Tool" parent="HelloThere/CanvasLayer/Tools/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
@@ -411,6 +411,12 @@ margin_left = 608.0
 margin_right = 908.0
 Scene_Path = "res://Tools/MathNode.tscn"
 Show_Name = "Maths"
+
+[node name="Tool4" parent="HelloThere/CanvasLayer/Tools/ScrollContainer/Expandable1" instance=ExtResource( 6 )]
+margin_left = 912.0
+margin_right = 1212.0
+Scene_Path = "res://Tools/DatabaseWriter.tscn"
+Show_Name = "Database Writer"
 
 [node name="Opener" type="AnimationPlayer" parent="HelloThere/CanvasLayer/Tools"]
 anims/OpenCloseTools = SubResource( 4 )

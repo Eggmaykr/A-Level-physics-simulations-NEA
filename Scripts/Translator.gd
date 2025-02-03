@@ -26,7 +26,7 @@ func _Update(_Blank = false):
 			get_node("DataTable").get_child(Data_Piece+1).get_node("DataType").text = Data[Data_Piece][0]
 			get_node("DataTable").get_child(Data_Piece+1).get_node("DataValue").text = str(Data[Data_Piece][1])
 			get_parent().get_parent().get_node("Sockets").get_child(Data_Piece + 2).method_type = "Numeric"
-			get_parent().get_parent().get_node("Sockets").get_child(Data_Piece + 2).Permanent_Parameter = Data[Data_Piece][1]
+			get_parent().get_parent().get_node("Sockets").get_child(Data_Piece + 2).Permanent_Parameter = Data[Data_Piece]
 			get_parent().get_parent().get_node("Sockets").get_child(Data_Piece + 2)._activate_Sender()
 			
 

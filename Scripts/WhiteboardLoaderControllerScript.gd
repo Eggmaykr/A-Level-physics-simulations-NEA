@@ -30,6 +30,7 @@ func _on_CreateNewConfirm_gui_input(event):
 				var data = {"BoardName" : WhiteBoardName, "NumberOfBoardElements" : int(0), "DateCreated" : converted_time_created}
 				Database.write_to_database("Whiteboards", data)
 				Database.CurrentWhiteBoardID = Database.get_size_of_table("Whiteboards", "UnqBoardID")
+				print(Database.CurrentWhiteBoardID)
 				get_tree().change_scene("res://MainGUI/Board.tscn")
 
 
