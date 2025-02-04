@@ -20,7 +20,7 @@ size = 95
 outline_color = Color( 0.235294, 0.388235, 0.501961, 1 )
 font_data = SubResource( 6 )
 
-[sub_resource type="DynamicFontData" id=7]
+[sub_resource type="DynamicFontData" id=12]
 override_oversampling = 20.0
 font_path = "res://Fonts/WorkSans-VariableFont_wght.ttf"
 
@@ -28,7 +28,7 @@ font_path = "res://Fonts/WorkSans-VariableFont_wght.ttf"
 size = 50
 outline_size = 1
 outline_color = Color( 0.188235, 0.235294, 0.517647, 1 )
-font_data = SubResource( 7 )
+font_data = SubResource( 12 )
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 1, 1, 1, 1 )
@@ -72,7 +72,6 @@ text = "Physics"
 align = 1
 
 [node name="MainButtonContainer" type="VBoxContainer" parent="."]
-visible = false
 margin_left = 108.0
 margin_top = 369.0
 margin_right = 1337.0
@@ -238,6 +237,7 @@ normal = ExtResource( 3 )
 pressed = ExtResource( 3 )
 
 [node name="LoadWhiteboard" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 

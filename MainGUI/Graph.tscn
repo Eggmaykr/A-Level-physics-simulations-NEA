@@ -1,0 +1,185 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://cross.png" type="Texture" id=1]
+[ext_resource path="res://MainTheme.tres" type="Theme" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.501961, 0.756863, 0.843137, 1 )
+border_width_bottom = 5
+border_color = Color( 0.337255, 0.568627, 0.607843, 1 )
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFontData" id=6]
+override_oversampling = 20.0
+font_path = "res://Fonts/Lora-VariableFont_wght.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 95
+outline_color = Color( 0.235294, 0.388235, 0.501961, 1 )
+font_data = SubResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.501961, 0.756863, 0.843137, 1 )
+border_width_bottom = 5
+border_color = Color( 0.337255, 0.568627, 0.607843, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 30
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 14
+border_width_top = 14
+border_width_right = 14
+border_width_bottom = 14
+border_color = Color( 0, 0.54902, 0.588235, 1 )
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="DynamicFontData" id=9]
+override_oversampling = 20.0
+font_path = "res://Fonts/WorkSans-VariableFont_wght.ttf"
+
+[sub_resource type="DynamicFont" id=10]
+size = 50
+outline_size = 1
+outline_color = Color( 0.188235, 0.235294, 0.517647, 1 )
+font_data = SubResource( 9 )
+
+[node name="Root" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.064
+margin_bottom = 0.159988
+custom_styles/panel = SubResource( 3 )
+
+[node name="Text" type="Label" parent="Title"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -309.0
+margin_top = 18.0
+margin_right = 324.0
+margin_bottom = 144.0
+custom_colors/font_color = Color( 0, 0.145098, 0.376471, 1 )
+custom_constants/shadow_offset_x = 310
+custom_fonts/font = SubResource( 2 )
+text = "Graph Editor"
+align = 1
+
+[node name="Title2" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.064
+margin_left = 42.0
+margin_top = 213.0
+margin_right = -735.0
+margin_bottom = 213.16
+custom_styles/panel = SubResource( 7 )
+
+[node name="Text" type="Label" parent="Title2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -439.5
+margin_top = 18.0
+margin_right = 443.5
+margin_bottom = 264.3
+custom_colors/font_color = Color( 0, 0.145098, 0.376471, 1 )
+custom_constants/shadow_offset_x = 310
+custom_fonts/font = SubResource( 2 )
+text = "Select Data X"
+align = 1
+
+[node name="Title3" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.064
+margin_left = 754.0
+margin_top = 213.0
+margin_right = -32.0
+margin_bottom = 213.16
+custom_styles/panel = SubResource( 7 )
+
+[node name="Text" type="Label" parent="Title3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -439.5
+margin_top = 18.0
+margin_right = 443.5
+margin_bottom = 264.3
+custom_colors/font_color = Color( 0, 0.145098, 0.376471, 1 )
+custom_constants/shadow_offset_x = 310
+custom_fonts/font = SubResource( 2 )
+text = "Select Data Y"
+align = 1
+
+[node name="AxisX" type="Line2D" parent="."]
+position = Vector2( 207, 2391 )
+points = PoolVector2Array( 0, 0, 1100, 0 )
+
+[node name="AxisY" type="Line2D" parent="."]
+position = Vector2( 204, 2391 )
+points = PoolVector2Array( 0, 0, 0, -1800 )
+
+[node name="SelectData" type="Panel" parent="."]
+margin_left = 57.0
+margin_top = 283.0
+margin_right = 1397.0
+margin_bottom = 2471.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 372, 384 )
+size_flags_horizontal = 7
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+custom_styles/panel = SubResource( 8 )
+
+[node name="LoadScroll" type="ScrollContainer" parent="SelectData"]
+margin_left = 61.0
+margin_top = 54.0
+margin_right = 1277.0
+margin_bottom = 2128.0
+
+[node name="LoadGrid" type="VBoxContainer" parent="SelectData/LoadScroll"]
+margin_right = 1200.0
+margin_bottom = 200.0
+
+[node name="DataSetSelection" type="Panel" parent="SelectData/LoadScroll/LoadGrid"]
+margin_right = 1200.0
+margin_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 1200, 200 )
+size_flags_horizontal = 7
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+
+[node name="Text" type="Label" parent="SelectData/LoadScroll/LoadGrid/DataSetSelection"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -614.0
+margin_top = -101.0
+margin_right = 615.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Data Set 1"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="CancelLoad" type="TouchScreenButton" parent="SelectData"]
+position = Vector2( 1181, -43 )
+scale = Vector2( 0.4, 0.4 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 1 )
