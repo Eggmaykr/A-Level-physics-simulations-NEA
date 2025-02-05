@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://ExperimentParts/DataSetSelectionPartMetadata.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFontData" id=9]
+override_oversampling = 20.0
+font_path = "res://Fonts/WorkSans-VariableFont_wght.ttf"
+
+[sub_resource type="DynamicFont" id=10]
+size = 50
+outline_size = 1
+outline_color = Color( 0.188235, 0.235294, 0.517647, 1 )
+font_data = SubResource( 9 )
+
+[node name="DataSetSelection" type="Panel"]
+margin_right = 1200.0
+margin_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 1200, 200 )
+size_flags_horizontal = 7
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Text" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -614.0
+margin_top = -101.0
+margin_right = 615.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Data Set 1"
+align = 1
+valign = 1
+autowrap = true
+
+[connection signal="gui_input" from="." to="." method="_on_DataSetSelection_gui_input"]

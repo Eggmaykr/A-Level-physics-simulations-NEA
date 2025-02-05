@@ -18,13 +18,16 @@ func _ready():
 	else:
 		pass
 
-func _on_Update_pressed():
+func _Update(Blank = false):
 	print(DataStored, str(ExperimentColorCode), " RES:", ExperimentID)
 	Database.update_database("Experiments", "ExperimentID", ExperimentID, {
 		"ValueName" : DataStored[0],
 		"ValueValue" : DataStored[1],
 		"ColorID" : str(ExperimentColorCode)
 		})
+
+func _on_Update_pressed():
+	_Update()
 
 func ChangeValue(data):
 	DataStored = data

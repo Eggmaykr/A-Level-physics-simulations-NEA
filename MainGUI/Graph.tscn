@@ -2,6 +2,8 @@
 
 [ext_resource path="res://cross.png" type="Texture" id=1]
 [ext_resource path="res://MainTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Scripts/GraphControllerScript.gd" type="Script" id=3]
+[ext_resource path="res://ExperimentParts/DataSetSelectionPart.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.501961, 0.756863, 0.843137, 1 )
@@ -40,19 +42,10 @@ corner_radius_top_right = 35
 corner_radius_bottom_right = 35
 corner_radius_bottom_left = 35
 
-[sub_resource type="DynamicFontData" id=9]
-override_oversampling = 20.0
-font_path = "res://Fonts/WorkSans-VariableFont_wght.ttf"
-
-[sub_resource type="DynamicFont" id=10]
-size = 50
-outline_size = 1
-outline_color = Color( 0.188235, 0.235294, 0.517647, 1 )
-font_data = SubResource( 9 )
-
 [node name="Root" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -152,31 +145,7 @@ margin_bottom = 2128.0
 margin_right = 1200.0
 margin_bottom = 200.0
 
-[node name="DataSetSelection" type="Panel" parent="SelectData/LoadScroll/LoadGrid"]
-margin_right = 1200.0
-margin_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 1200, 200 )
-size_flags_horizontal = 7
-size_flags_vertical = 3
-theme = ExtResource( 2 )
-
-[node name="Text" type="Label" parent="SelectData/LoadScroll/LoadGrid/DataSetSelection"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -614.0
-margin_top = -101.0
-margin_right = 615.0
-margin_bottom = 90.0
-custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
-custom_fonts/font = SubResource( 10 )
-text = "Data Set 1"
-align = 1
-valign = 1
-autowrap = true
+[node name="DataSetSelection" parent="SelectData/LoadScroll/LoadGrid" instance=ExtResource( 4 )]
 
 [node name="CancelLoad" type="TouchScreenButton" parent="SelectData"]
 position = Vector2( 1181, -43 )
