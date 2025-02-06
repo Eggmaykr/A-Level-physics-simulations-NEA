@@ -22,17 +22,22 @@ func _ready():
 		"UnqBoardID" : {"data_type":"int", "foreign_key" : true, "not_null" : true},
 		"ItemFilePath" : {"data_type":"text"},
 		"ItemSettings" : {"data_type" : "blob"},
-		"ConnectedItemIDs" : {"data_type" : "blob"}
 	}
 	database.create_table("WhiteboardItems", ItemsTable)
 	var ExperimentData = {
-		"ExperimentID" : {"data_type" : "int", "primary_key" : true, "not_null" : true, "auto_increment" : true},
 		"UnqBoardID": {"data_type" : "int", "foreign_key" : true, "not_null" : true},
 		"ValueName" : {"data_type" : "text"},
 		"ValueValue" : {"data_type" : "real"},
 		"ColorID" : {"data_type" : "text"}
 	}
 	database.create_table("Experiments", ExperimentData)
+	var ConnectionData = {
+		"ItemIDFrom" : {"data_type":"int", "foreign_key" : true, "not_null" : true},
+		"ItemIDTo" : {"data_type":"int", "foreign_key" : true, "not_null" : true},
+		"ConnectingSocketFrom" : {"data_type" : "int"},
+		"ConnectingSocketTo" : {"data_type" : "int"}
+	}
+	database.create_table("Connections", ConnectionData)
 
 func write_to_database(table_name, updatedData : Dictionary):
 	database.insert_row(table_name, updatedData)

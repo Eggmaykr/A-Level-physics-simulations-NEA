@@ -158,10 +158,10 @@ margin_right = 510.0
 margin_bottom = 510.0
 
 [node name="ColorPicker" type="ColorPicker" parent="Main/Experiment"]
-margin_left = 481.0
-margin_top = 1.0
-margin_right = 782.0
-margin_bottom = 437.0
+margin_left = 485.0
+margin_top = 5.0
+margin_right = 786.0
+margin_bottom = 441.0
 presets_enabled = false
 presets_visible = false
 
