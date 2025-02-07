@@ -18,7 +18,7 @@ func _ready():
 	}
 	database.create_table("Whiteboards", BoardTable)
 	var ItemsTable = {
-		"ItemID" : {"data_type" : "int", "primary_key" : true, "not_null" : true, "auto_increment" : true},
+		"ItemID" : {"data_type" : "text", "primary_key" : true, "not_null" : true, "auto_increment" : true},
 		"UnqBoardID" : {"data_type":"int", "foreign_key" : true, "not_null" : true},
 		"ItemFilePath" : {"data_type":"text"},
 		"ItemSettings" : {"data_type" : "blob"},

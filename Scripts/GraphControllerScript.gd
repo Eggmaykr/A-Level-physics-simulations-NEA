@@ -2,8 +2,12 @@ extends Control
 
 var DataSelectionAxis : String = "X"
 
+func _ready():
+	print(open_data())
+
 func open_data():
-	var result = Database.run_custom_query("SELECT ExperimentID, ColorID, ValueName FROM Experiments")
+	var result = Database.run_custom_query("SELECT ColorID, ValueName, UnqBoardID FROM Experiments")
+	return result
 	
 
 func select_data(data_id):
@@ -12,5 +16,6 @@ func select_data(data_id):
 func trunctate_data(data):
 	var ArrayOfPreviousExperimentIDs = []
 	for datapiece in data:
-		pass
+		if ArrayOfPreviousExperimentIDs.find(datapiece["ColorID"]) == -1:
+			ArrayOfPreviousExperimentIDs.append(datapiece["ColorID"])
 	return ArrayOfPreviousExperimentIDs
