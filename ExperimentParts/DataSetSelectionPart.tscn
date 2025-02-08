@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://ExperimentParts/DataSetSelectionPartMetadata.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=11]
 
 [sub_resource type="DynamicFontData" id=9]
 override_oversampling = 20.0
@@ -22,21 +24,38 @@ rect_min_size = Vector2( 1200, 200 )
 size_flags_horizontal = 7
 size_flags_vertical = 3
 theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 11 )
 script = ExtResource( 2 )
 
-[node name="Text" type="Label" parent="."]
+[node name="ValueName" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -614.0
-margin_top = -101.0
-margin_right = 615.0
-margin_bottom = 90.0
+margin_left = -600.0
+margin_top = -43.0
+margin_right = 600.0
+margin_bottom = 102.0
 custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
 custom_fonts/font = SubResource( 10 )
-text = "Data Set 1"
+text = "Value Name"
 align = 1
+valign = 1
+autowrap = true
+
+[node name="WhiteboardID" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -600.0
+margin_top = -101.0
+margin_right = 600.0
+margin_bottom = -42.0
+custom_colors/font_color = Color( 0.188235, 0.235294, 0.517647, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "[adv] Whiteboard ID:"
+align = 2
 valign = 1
 autowrap = true
 

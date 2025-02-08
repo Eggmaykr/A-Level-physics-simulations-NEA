@@ -107,7 +107,7 @@ size_flags_horizontal = 7
 size_flags_vertical = 3
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-ExperimentPath = "res://Experiments/SHM_Spring.tscn"
+ExperimentPath = "res://MainGUI/Graph.tscn"
 
 [node name="Text" type="Label" parent="MainButtonContainer/OpenGraphEditor"]
 anchor_left = 0.5

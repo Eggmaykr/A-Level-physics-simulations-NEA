@@ -20,6 +20,7 @@ func _ready():
 	var ItemsTable = {
 		"ItemID" : {"data_type" : "text", "primary_key" : true, "not_null" : true, "auto_increment" : true},
 		"UnqBoardID" : {"data_type":"int", "foreign_key" : true, "not_null" : true},
+		"ItemName" : {"data_type":"text"},
 		"ItemFilePath" : {"data_type":"text"},
 		"ItemSettings" : {"data_type" : "blob"},
 	}
