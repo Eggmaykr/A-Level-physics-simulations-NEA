@@ -121,6 +121,36 @@ points = PoolVector2Array( 0, 0, 1100, 0 )
 position = Vector2( 204, 2391 )
 points = PoolVector2Array( 0, 0, 0, -1800 )
 
+[node name="Line" type="Line2D" parent="."]
+position = Vector2( 204, 2391 )
+
+[node name="XAxisName" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -299.0
+margin_top = 2400.0
+margin_right = 352.0
+margin_bottom = 2540.0
+custom_colors/font_color = Color( 0, 0.145098, 0.376471, 1 )
+custom_constants/shadow_offset_x = 310
+custom_fonts/font = SubResource( 2 )
+text = "X Axis"
+align = 1
+
+[node name="YAxisName" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -556.0
+margin_top = 1184.0
+margin_right = 95.0
+margin_bottom = 1324.0
+rect_rotation = 89.9999
+custom_colors/font_color = Color( 0, 0.145098, 0.376471, 1 )
+custom_constants/shadow_offset_x = 310
+custom_fonts/font = SubResource( 2 )
+text = "Y Axis"
+align = 1
+
 [node name="SelectData" type="Panel" parent="."]
 visible = false
 margin_left = 57.0

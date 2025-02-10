@@ -1,7 +1,28 @@
 extends Node2D
-var Open = false
-var Moving = false
-var Selected = false
+var Open : bool = false
+var Moving : bool = false
+var Selected : bool = false
+var Instantiated : bool = false
+export var PathToSelf : String = ""
+var UniqSelfID : int = 0
+
+func _ready():
+	if Instantiated == false:
+		var SettingsDefaults = get_node("Main/Experiment").get_defaults()
+		Database.write_to_database("WhiteboardItems",{
+		"ItemName" : self.name,
+		"UnqBoardID" : Database.CurrentWhiteBoardID,
+		"ItemFilePath" : PathToSelf,
+		"ItemSettings" : SettingsDefaults
+		})
+		UniqSelfID = Database.get_size_of_table("WhiteboardItems", "ItemID")
+	else:
+		var settingsToLoad = Database.run_custom_query("SELECT ItemSettings FROM WhiteboardItems WHERE UnqBoardID = " + str(Database.CurrentWhiteBoardID) + " and ItemID = " + str(UniqSelfID))
+		get_node("Main/Experiment").load_settings(settingsToLoad)
+
+func initialise(SelfID):
+	UniqSelfID = SelfID
+	Instantiated = true
 
 func _on_Settings_pressed():
 	if Open == false:
@@ -40,8 +61,12 @@ func _unhandled_input(event):
 
 func _on_Delete_pressed():
 	if Open == true and get_child_count() > 3:
+		for socket in get_node("Sockets").get_children():
+			socket.sever_connection()
 		self.queue_free()
 	elif Selected == true and get_child_count() == 3:
+		for socket in get_node("Sockets").get_children():
+			socket.sever_connection()
 		self.queue_free()
 
 func _on_Main_gui_input(event):

@@ -54,8 +54,19 @@ func _Connect_Wire(NodeCon, wire = null):
 		return WireConnected
 	
 
+func _Create_Quick_Connection(FromSocket, ToSocket): #creates connection between two sockets when loading whiteboard. Only ran on the socket connecting from
+	SocketConnected = ToSocket
+	ToSocket.SocketConnected = FromSocket
+	var WireInst = load("res://MainGUI/Wire.tscn").instance()
+	WireConnected = WireInst._Set_Up(FromSocket.rect_global_position, ToSocket.rect_global_position)
+	get_parent().get_parent().get_parent().get_parent().get_node("Items").add_child(WireInst)
+	ToSocket.WireConnected = WireInst
+	
+
 func sever_connection():
 	if WireConnected:
 		WireConnected.queue_free()
+		SocketConnected.WireConnected = null
+		WireConnected.SocketConnected = null
 		SocketConnected = null
 		WireConnected = null

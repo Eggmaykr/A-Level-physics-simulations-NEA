@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/BoardItemScript.gd" type="Script" id=1]
 [ext_resource path="res://MainGUI/WireConnection.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Tools/Experiment.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/DatabaseWriterScript.gd" type="Script" id=3]
 [ext_resource path="res://MainTheme.tres" type="Theme" id=4]
 [ext_resource path="res://move-selection.png" type="Texture" id=5]
 [ext_resource path="res://trash-bin.png" type="Texture" id=6]
@@ -158,10 +158,10 @@ margin_right = 510.0
 margin_bottom = 510.0
 
 [node name="ColorPicker" type="ColorPicker" parent="Main/Experiment"]
-margin_left = 485.0
-margin_top = 5.0
-margin_right = 786.0
-margin_bottom = 441.0
+margin_left = 497.0
+margin_top = 17.0
+margin_right = 798.0
+margin_bottom = 453.0
 presets_enabled = false
 presets_visible = false
 

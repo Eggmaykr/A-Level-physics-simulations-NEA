@@ -1,14 +1,12 @@
 extends Control
 
 var DataStored = []
-var ExperimentID : int = 0
 var ExperimentColorCode : Color
 
 func _ready():
-	print(get_parent().get_parent().name)
+	var ownName = get_parent().get_parent().name
 
 func _Update(Blank = false):
-	print(DataStored, str(ExperimentColorCode), " RES:", ExperimentID)
 	Database.write_to_database("Experiments", {
 		"UnqBoardID": Database.CurrentWhiteBoardID,
 		"ValueName" : DataStored[0],
@@ -28,3 +26,15 @@ func ChangeValue(data):
 func _on_ColorPicker_color_changed(color):
 	ExperimentColorCode = color
 	get_node("ColorID").modulate = color
+
+func get_defaults():
+	var ReturnData : PoolByteArray = PoolByteArray([["ExperimentColorCode", ExperimentColorCode]])
+	return ReturnData
+
+func load_settings(settings):
+	var settingsArray = Array(settings["ItemSettings"])
+	ExperimentColorCode = settingsArray[0][1]
+	get_node("ColorID").modulate = ExperimentColorCode
+
+func update_settings():
+	Database.update_database("Experiments", "ItemID", get_parent().get_parent().UniqSelfID, {"ItemSettings" : PoolByteArray([["ExperimentColorCode", ExperimentColorCode]])})

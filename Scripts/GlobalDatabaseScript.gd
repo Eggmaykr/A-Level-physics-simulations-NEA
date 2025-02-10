@@ -14,15 +14,14 @@ func _ready():
 		"UnqBoardID" : {"data_type":"int", "primary_key" : true, "not_null" : true, "auto_increment" : true},
 		"BoardName" : {"data_type" : "text"},
 		"DateCreated" : {"data_type" : "text"},
-		"NumberOfBoardElements" : {"data_type" : "int"}
 	}
 	database.create_table("Whiteboards", BoardTable)
 	var ItemsTable = {
 		"ItemID" : {"data_type" : "text", "primary_key" : true, "not_null" : true, "auto_increment" : true},
 		"UnqBoardID" : {"data_type":"int", "foreign_key" : true, "not_null" : true},
-		"ItemName" : {"data_type":"text"},
+		"ItemName" : {"data_type" : "text"},
 		"ItemFilePath" : {"data_type":"text"},
-		"ItemSettings" : {"data_type" : "blob"},
+		"ItemSettings" : {"data_type" : "blob"}
 	}
 	database.create_table("WhiteboardItems", ItemsTable)
 	var ExperimentData = {
@@ -33,8 +32,9 @@ func _ready():
 	}
 	database.create_table("Experiments", ExperimentData)
 	var ConnectionData = {
-		"ItemIDFrom" : {"data_type":"int", "foreign_key" : true, "not_null" : true},
-		"ItemIDTo" : {"data_type":"int", "foreign_key" : true, "not_null" : true},
+		"UnqBoardID": {"data_type" : "int", "foreign_key" : true, "not_null" : true},
+		"ItemNameFrom" : {"data_type":"text", "foreign_key" : true, "not_null" : true},
+		"ItemNameTo" : {"data_type":"text", "foreign_key" : true, "not_null" : true},
 		"ConnectingSocketFrom" : {"data_type" : "int"},
 		"ConnectingSocketTo" : {"data_type" : "int"}
 	}
