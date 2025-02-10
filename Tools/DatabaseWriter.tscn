@@ -86,6 +86,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
+PathToSelf = "res://Tools/DatabaseWriter.tscn"
 
 [node name="Selected" type="Panel" parent="."]
 margin_left = 13.0
@@ -158,10 +159,10 @@ margin_right = 510.0
 margin_bottom = 510.0
 
 [node name="ColorPicker" type="ColorPicker" parent="Main/Experiment"]
-margin_left = 497.0
-margin_top = 17.0
-margin_right = 798.0
-margin_bottom = 453.0
+margin_left = 501.0
+margin_top = 21.0
+margin_right = 802.0
+margin_bottom = 457.0
 presets_enabled = false
 presets_visible = false
 

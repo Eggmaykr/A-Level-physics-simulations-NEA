@@ -74,6 +74,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
+PathToSelf = "res://Tools/Timer.tscn"
 
 [node name="Selected" type="Panel" parent="."]
 margin_left = 13.0

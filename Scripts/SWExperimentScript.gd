@@ -34,10 +34,8 @@ func _process(delta):
 func createWire(subdivs):
 	subdivisions = subdivs
 	var tempSizeForSubdivs : float = maxSize/subdivs
-	print(tempSizeForSubdivs)
 	for pointNumber in range(subdivs):
 		var tempCurrentX : float = (maxSize/subdivs) * pointNumber * LengthOfWireMeters
-		print(tempCurrentX)
 		var tempAmplitudeAtPoint = 2*Amplitude*cos(((2*PI)/Wavelength)*tempCurrentX/10)*cos(2*PI*FrequencyHertz*TimeSeconds)
 		get_node("StandingWave").add_point(Vector2(tempCurrentX, tempAmplitudeAtPoint))
 
@@ -67,4 +65,16 @@ func _Pause(_Blank = false):
 func _Read_Variables(_Blank):
 	return [["Wavelength", Wavelength],["Frequency", FrequencyHertz], ["Tention", TentionN], ["Time", TimeSeconds], ["Length", LengthOfWireMeters], ["Mass per Unit Length", MassPerUnitLengthKilograms]]
 
+func get_defaults():
+	var ReturnData : String = var2str({"WaveSpeedMS" : WaveSpeedMS,"FrequencyHertz" : FrequencyHertz, "TentionN" : TentionN, "TimeSeconds" : TimeSeconds, "LengthOfWireMeters" : LengthOfWireMeters, "MassPerUnitLengthKilograms" : MassPerUnitLengthKilograms})
+	return ReturnData
 
+func load_settings(settings):
+	var settingsArray = str2var(settings["ItemSettings"])
+	for setting in settingsArray:
+		set(setting, settingsArray[setting])
+	get_parent().get_parent().get_node("Expandable/EditableValues/Frequency").value = FrequencyHertz*10
+	get_parent().get_parent().get_node("Expandable/EditableValues/Wavelength").value = WaveSpeedMS
+
+func update_settings():
+	Database.update_database("Experiments", "ItemID", get_parent().get_parent().UniqSelfID, {"ItemSettings" : var2str({"WaveSpeedMS" : WaveSpeedMS,"FrequencyHertz" : FrequencyHertz, "TentionN" : TentionN, "TimeSeconds" : TimeSeconds, "LengthOfWireMeters" : LengthOfWireMeters, "MassPerUnitLengthKilograms" : MassPerUnitLengthKilograms})})

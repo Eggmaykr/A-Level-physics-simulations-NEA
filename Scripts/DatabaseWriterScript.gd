@@ -28,13 +28,13 @@ func _on_ColorPicker_color_changed(color):
 	get_node("ColorID").modulate = color
 
 func get_defaults():
-	var ReturnData : PoolByteArray = PoolByteArray([["ExperimentColorCode", ExperimentColorCode]])
+	var ReturnData : String = var2str({"ExperimentColorCode": ExperimentColorCode})
 	return ReturnData
 
 func load_settings(settings):
-	var settingsArray = Array(settings["ItemSettings"])
-	ExperimentColorCode = settingsArray[0][1]
+	var settingsArray = str2var(settings["ItemSettings"])
+	ExperimentColorCode = settingsArray["ExperimentColorCode"]
 	get_node("ColorID").modulate = ExperimentColorCode
 
 func update_settings():
-	Database.update_database("Experiments", "ItemID", get_parent().get_parent().UniqSelfID, {"ItemSettings" : PoolByteArray([["ExperimentColorCode", ExperimentColorCode]])})
+	Database.update_database("Experiments", "ItemID", get_parent().get_parent().UniqSelfID, {"ItemSettings" : var2str({"ExperimentColorCode": ExperimentColorCode})})

@@ -4,6 +4,7 @@ var DataBasePath : String = ""
 var SQLite := preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var database = null
 var CurrentWhiteBoardID : int = 0
+var Loading = false
 
 func _ready():
 	database = SQLite.new()
@@ -17,11 +18,12 @@ func _ready():
 	}
 	database.create_table("Whiteboards", BoardTable)
 	var ItemsTable = {
-		"ItemID" : {"data_type" : "text", "primary_key" : true, "not_null" : true, "auto_increment" : true},
+		"ItemID" : {"data_type" : "int", "primary_key" : true, "not_null" : true, "auto_increment" : true},
 		"UnqBoardID" : {"data_type":"int", "foreign_key" : true, "not_null" : true},
 		"ItemName" : {"data_type" : "text"},
 		"ItemFilePath" : {"data_type":"text"},
-		"ItemSettings" : {"data_type" : "blob"}
+		"ItemSettings" : {"data_type" : "text"},#is a dictionary converted to a string
+		"ItemPosition" : {"data_type" : "text"}
 	}
 	database.create_table("WhiteboardItems", ItemsTable)
 	var ExperimentData = {
@@ -35,18 +37,21 @@ func _ready():
 		"UnqBoardID": {"data_type" : "int", "foreign_key" : true, "not_null" : true},
 		"ItemNameFrom" : {"data_type":"text", "foreign_key" : true, "not_null" : true},
 		"ItemNameTo" : {"data_type":"text", "foreign_key" : true, "not_null" : true},
-		"ConnectingSocketFrom" : {"data_type" : "int"},
-		"ConnectingSocketTo" : {"data_type" : "int"}
+		"ConnectingSocketFrom" : {"data_type" : "text"},
+		"ConnectingSocketTo" : {"data_type" : "text"}
 	}
 	database.create_table("Connections", ConnectionData)
 
 func write_to_database(table_name, updatedData : Dictionary):
 	database.insert_row(table_name, updatedData)
 
-func remove_from_database(table_name : String, primaryKeyName : String, primaryKey : int):
-	database.delete_rows(table_name, primaryKeyName + " = " + str(primaryKey))
+func remove_from_database(table_name : String, primaryKeyName : String, primaryKey, foreignKeyName : String = "", foreignKey : int = 0):
+	if foreignKeyName == "":
+		database.delete_rows(table_name, primaryKeyName + " = " + str(primaryKey))
+	else:
+		database.delete_rows(table_name, primaryKeyName + " = " + str(primaryKey) + " and " + foreignKeyName + " = " + str(foreignKey))
 
-func update_database(table_name : String, primaryKeyName : String, primaryKey : int, updatedData : Dictionary):
+func update_database(table_name : String, primaryKeyName : String, primaryKey, updatedData : Dictionary):
 	print(database.update_rows(table_name, primaryKeyName + " = " + str(primaryKey), updatedData), "Result")
 
 func run_custom_query(query_string : String):

@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/WhiteboardLoaderControllerScript.gd" type="Script" id=1]
 [ext_resource path="res://MainTheme.tres" type="Theme" id=2]
 [ext_resource path="res://cross.png" type="Texture" id=3]
-[ext_resource path="res://ExperimentParts/LoadWhiteboard.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.501961, 0.756863, 0.843137, 1 )
@@ -238,6 +237,7 @@ normal = ExtResource( 3 )
 pressed = ExtResource( 3 )
 
 [node name="LoadWhiteboard" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -261,11 +261,7 @@ margin_right = 1277.0
 margin_bottom = 2128.0
 
 [node name="LoadGrid" type="GridContainer" parent="LoadWhiteboard/NewWhiteboard/LoadScroll"]
-margin_right = 400.0
-margin_bottom = 400.0
 columns = 8
-
-[node name="LoadItem" parent="LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid" instance=ExtResource( 4 )]
 
 [node name="CancelLoad" type="TouchScreenButton" parent="LoadWhiteboard"]
 position = Vector2( 1238, 240 )
@@ -280,5 +276,3 @@ pressed = ExtResource( 3 )
 [connection signal="gui_input" from="CreateNew/CreateNewConfirm" to="." method="_on_CreateNewConfirm_gui_input"]
 [connection signal="pressed" from="CreateNew/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="LoadWhiteboard/CancelLoad" to="." method="_on_CancelLoad_pressed"]
-
-[editable path="LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid/LoadItem"]

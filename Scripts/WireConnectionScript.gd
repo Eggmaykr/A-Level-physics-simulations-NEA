@@ -51,6 +51,13 @@ func _Connect_Wire(NodeCon, wire = null):
 		for Socket in Sockets:
 			if Socket.Is_Reciever == true and Socket.WireConnected == null:
 				Socket.hide()
+		Database.write_to_database("Connections", {
+			"UnqBoardID": Database.CurrentWhiteBoardID,
+			"ItemNameFrom" : NodeCon.get_parent().get_parent().name,
+			"ItemNameTo" : get_parent().get_parent().name,
+			"ConnectingSocketFrom" : NodeCon.name,
+			"ConnectingSocketTo" : self.name
+		})
 		return WireConnected
 	
 
@@ -65,6 +72,10 @@ func _Create_Quick_Connection(FromSocket, ToSocket): #creates connection between
 
 func sever_connection():
 	if WireConnected:
+		if self.Is_Reciever == false:
+			Database.remove_from_database("Connections", "ItemNameFrom", self.name, "UnqBoardID", Database.CurrentWhiteBoardID)
+		else:
+			Database.remove_from_database("Connections", "ItemNameTo", self.name, "UnqBoardID", Database.CurrentWhiteBoardID)
 		WireConnected.queue_free()
 		SocketConnected.WireConnected = null
 		WireConnected.SocketConnected = null

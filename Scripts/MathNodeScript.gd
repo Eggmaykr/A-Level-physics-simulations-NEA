@@ -52,3 +52,22 @@ func _on_DIVIDE_gui_input(event):
 		if event.pressed == true:
 			Mode = ModeNames.ADD
 			get_node("DataTable/ModeDisplay").text = "DIVIDE"
+
+func get_defaults():
+	var ReturnData : String = str(to_json({"Mode": Mode}))
+	return ReturnData
+
+func load_settings(settings):
+	var settingsArray = str2var(settings["ItemSettings"])
+	Mode = settingsArray["Mode"]
+	if Mode == ModeNames.ADD:
+		get_node("DataTable/ModeDisplay").text = "ADD"
+	elif Mode == ModeNames.SUB:
+		get_node("DataTable/ModeDisplay").text = "SUBTRACT"
+	elif Mode == ModeNames.MULT:
+		get_node("DataTable/ModeDisplay").text = "MULTIPLY"
+	elif Mode == ModeNames.DIV:
+		get_node("DataTable/ModeDisplay").text = "DIVIDE"
+
+func update_settings():
+	Database.update_database("Experiments", "ItemID", get_parent().get_parent().UniqSelfID, {"ItemSettings" : var2str({"Mode": Mode})})

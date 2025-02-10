@@ -13,12 +13,14 @@ func _ready():
 		"ItemName" : self.name,
 		"UnqBoardID" : Database.CurrentWhiteBoardID,
 		"ItemFilePath" : PathToSelf,
-		"ItemSettings" : SettingsDefaults
+		"ItemSettings" : SettingsDefaults,
+		"ItemPosition" : var2str(self.position)
 		})
 		UniqSelfID = Database.get_size_of_table("WhiteboardItems", "ItemID")
 	else:
 		var settingsToLoad = Database.run_custom_query("SELECT ItemSettings FROM WhiteboardItems WHERE UnqBoardID = " + str(Database.CurrentWhiteBoardID) + " and ItemID = " + str(UniqSelfID))
-		get_node("Main/Experiment").load_settings(settingsToLoad)
+		print(settingsToLoad)
+		get_node("Main/Experiment").load_settings(settingsToLoad[0])
 
 func initialise(SelfID):
 	UniqSelfID = SelfID
@@ -39,6 +41,7 @@ func _input(event):
 				Moving = false
 		elif event is InputEventScreenDrag:
 			self.position += event.relative
+			Database.update_database("WhiteboardItems", "ItemID", UniqSelfID, {"ItemPosition" : str(self.position)})
 		var OwnSockets = get_node("Sockets").get_children()
 		for Socket in OwnSockets:
 			if Socket.WireConnected:

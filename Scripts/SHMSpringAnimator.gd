@@ -59,3 +59,17 @@ func _Pause(_Blank = false):
 	elif is_processing() == true:
 		get_parent().get_parent().get_node("Selected/Pause").pressed = false
 		set_process(false)
+
+func get_defaults():
+	var ReturnData : PoolByteArray = PoolByteArray([["WaveSpeedMS", WaveSpeedMS],["FrequencyHertz", FrequencyHertz], ["TentionN", TentionN], ["TimeSeconds", TimeSeconds], ["LengthOfWireMeters", LengthOfWireMeters], ["MassPerUnitLengthKilograms", MassPerUnitLengthKilograms]])
+	return ReturnData
+
+func load_settings(settings):
+	var settingsArray = Array(settings["ItemSettings"])
+	for setting in settingsArray:
+		set(setting[0], setting[1])
+	get_parent().get_parent().get_node("Expandable/EditableValues/Frequency").value = FrequencyHertz*10
+	get_parent().get_parent().get_node("Expandable/EditableValues/Wavelength").value = WaveSpeedMS
+
+func update_settings():
+	Database.update_database("Experiments", "ItemID", get_parent().get_parent().UniqSelfID, {"ItemSettings" : PoolByteArray([["WaveSpeedMS", WaveSpeedMS],["FrequencyHertz", FrequencyHertz], ["TentionN", TentionN], ["TimeSeconds", TimeSeconds], ["LengthOfWireMeters", LengthOfWireMeters], ["MassPerUnitLengthKilograms", MassPerUnitLengthKilograms]])})

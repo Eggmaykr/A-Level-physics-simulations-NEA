@@ -41,3 +41,15 @@ func _on_HSlider_value_changed(value):
 	get_node("Timer").stop()
 	get_node("Timer").wait_time = value
 	get_node("VBoxContainer/TimeLeft").text = str(value) + "/" + str(int(get_node("Timer").time_left))
+
+func get_defaults():
+	var ReturnData : String = str(to_json({"Repeating": Repeating}))
+	return ReturnData
+
+func load_settings(settings):
+	var settingsArray = str2var(settings["ItemSettings"])
+	Repeating = settingsArray["Repeating"]
+	get_node("VBoxContainer/CheckButton").pressed = Repeating
+
+func update_settings():
+	Database.update_database("Experiments", "ItemID", get_parent().get_parent().UniqSelfID, {"ItemSettings" : var2str({"Repeating": Repeating})})

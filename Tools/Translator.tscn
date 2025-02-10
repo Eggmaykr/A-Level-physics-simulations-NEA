@@ -73,6 +73,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
+PathToSelf = "res://Tools/Translator.tscn"
 
 [node name="Selected" type="Panel" parent="."]
 margin_left = 13.0

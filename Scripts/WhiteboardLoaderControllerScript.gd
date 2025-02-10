@@ -22,8 +22,9 @@ func _on_LoadWhiteboard_gui_input(event):
 				var whiteboardinstance = load("res://ExperimentParts/LoadWhiteboard.tscn").instance()
 				whiteboardinstance.UnqBoardID = whiteboard["UnqBoardID"]
 				get_node("LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid").add_child(whiteboardinstance)
-				get_node("LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid").get_child(-1).get_node("NameLabel").text = str(whiteboard["UnqBoardID"])
-				get_node("LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid").get_child(-1).get_node("DateLabel").text = whiteboard["DateCreated"]
+				var LastChild = get_node("LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid").get_child_count()-1
+				get_node("LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid").get_child(LastChild).get_node("NameLabel").text = str(whiteboard["UnqBoardID"])
+				get_node("LoadWhiteboard/NewWhiteboard/LoadScroll/LoadGrid").get_child(LastChild).get_node("DateLabel").text = whiteboard["DateCreated"]
 
 
 func _on_Cancel_pressed():
@@ -49,5 +50,7 @@ func _on_LineEdit_text_changed(new_text):
 	WhiteBoardName = new_text
 
 func initiateWhiteboardLoading(BoardID):
-	pass
+	Database.CurrentWhiteBoardID = BoardID
+	Database.Loading = true
+	get_tree().change_scene("res://MainGUI/Board.tscn")
 
