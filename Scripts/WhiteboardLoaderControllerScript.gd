@@ -1,6 +1,6 @@
 extends Control
 
-var WhiteBoardName = ""
+var WhiteBoardName = "Default"
 
 
 func _on_NewWhiteboard_gui_input(event):
